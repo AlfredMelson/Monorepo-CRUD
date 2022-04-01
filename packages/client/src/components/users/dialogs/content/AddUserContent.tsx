@@ -6,7 +6,7 @@ import { addUserFieldTitle } from '../../../../style'
 import { REGEX_Username, regexEmailValidation } from '../../../../utils'
 import AddEmployee from '../submissions/AddEmployee'
 
-export default function AddEmplContent() {
+export default function AddUserContent() {
   // update email dialog state
   // const setAddEmplDialogState = useSetRecoilState(AddEmplDialogStateAtom)
 

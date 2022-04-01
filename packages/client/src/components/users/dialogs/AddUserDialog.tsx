@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil'
 import { AddUserDialogStateAtom } from '../../../recoil-state'
 import { usersCardHeading } from '../../../style'
 import CloseIcon from '../../icons/CloseIcon'
-import { AddEmplContent } from './content'
+import { AddUserContent } from './content'
 import { DialogHeader } from './header'
 
 function AddUserDialog() {
@@ -40,7 +40,7 @@ function AddUserDialog() {
                   </button>
                 </div>
                 <div className='relative flex-auto p-6'>
-                  <AddEmplContent />
+                  <AddUserContent />
                 </div>
                 <div className='flex items-center justify-end rounded-b p-6'>
                   <button
@@ -72,7 +72,7 @@ function AddUserDialog() {
 //     }}
 //   />
 // </motion.div>
-//               <AddEmplContent />
+//               <AddUserContent />
 //             </motion.div>
 //           </div>
 //         </div>

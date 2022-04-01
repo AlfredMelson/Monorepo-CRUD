@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil'
 import { SearchUserDialogStateAtom } from '../../../recoil-state'
 import { usersCardHeading } from '../../../style'
 import CloseIcon from '../../icons/CloseIcon'
-import { AddEmplContent } from './content'
+import { SearchUserContent } from './content'
 import { DialogHeader } from './header'
 
 function SearchUserDialog() {
@@ -41,7 +41,7 @@ function SearchUserDialog() {
                   </button>
                 </div>
                 <div className='relative flex-auto p-6'>
-                  <AddEmplContent />
+                  <SearchUserContent />
                 </div>
                 <div className='flex items-center justify-end rounded-b p-6'>
                   <button

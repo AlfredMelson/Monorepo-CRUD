@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil'
 import { EditUserDialogStateAtom } from '../../../recoil-state'
 import { usersCardHeading } from '../../../style'
 import CloseIcon from '../../icons/CloseIcon'
-import { AddEmplContent } from './content'
+import { EditUserContent } from './content'
 import { DialogHeader } from './header'
 
 function EditUserDialog() {
@@ -38,7 +38,7 @@ function EditUserDialog() {
                   </button>
                 </div>
                 <div className='relative flex-auto p-6'>
-                  <AddEmplContent />
+                  <EditUserContent />
                 </div>
                 <div className='flex items-center justify-end rounded-b p-6'>
                   <button

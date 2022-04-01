@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil'
 import { DeleteUserDialogStateAtom } from '../../../recoil-state'
 import { usersCardHeading } from '../../../style'
 import CloseIcon from '../../icons/CloseIcon'
-import { AddEmplContent } from './content'
+import { DeleteUserContent } from './content'
 import { DialogHeader } from './header'
 
 function DeleteUserDialog() {
@@ -29,7 +29,7 @@ function DeleteUserDialog() {
               <div className='relative flex w-full flex-col rounded bg-grey-700 shadow-lg outline-none focus:outline-none'>
                 <div className='flex items-start justify-between p-5'>
                   <motion.div variants={usersCardHeading}>
-                    <DialogHeader title='Add New User' />
+                    <DialogHeader title='Delete User' />
                   </motion.div>
                   <button
                     onClick={() => setDeleteUserDialogState(false)}
@@ -39,7 +39,7 @@ function DeleteUserDialog() {
                   </button>
                 </div>
                 <div className='relative flex-auto p-6'>
-                  <AddEmplContent />
+                  <DeleteUserContent />
                 </div>
                 <div className='flex items-center justify-end rounded-b p-6'>
                   <button
