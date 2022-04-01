@@ -10,7 +10,7 @@ export default function EditUserButton() {
         onClick={() => {
           setEditUserDialogState(true)
         }}
-        aria-label='Add New User'
+        aria-label='Edit User'
         className=' text-blue-500 transition duration-300 ease-in-out hover:text-blue-400  focus:text-blue-400 focus:outline-none  active:text-blue-400'>
         <SettingsIcon />
       </button>

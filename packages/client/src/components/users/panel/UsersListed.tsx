@@ -38,7 +38,7 @@ const UsersListed = () => {
             exit='exit'
             key={index}
             onClick={() => setSelectedUser(user.userId)}
-            className='user-list-group grid w-full grid-cols-[50px_160px_160px_40px_40px] place-content-between gap-2 py-5'>
+            className='user-list-group grid w-full grid-cols-[50px_160px_160px_40px_40px] place-content-between gap-2 py-4'>
             <UserAvatar
               firstname={user.firstname}
               lastname={user.lastname}
@@ -49,13 +49,13 @@ const UsersListed = () => {
               country={''}
             />
             <div className='col-span-1 grid grid-cols-1 place-content-center'>
-              <h6 className='text-left text-sm font-medium capitalize text-white-100'>
+              <h6 className='text-md text-left capitalize text-gold-50'>
                 {user.firstname} {user.lastname}
               </h6>
               <p className='text-left text-sm text-white-50'>{user.email}</p>
             </div>
             <div className='col-span-1 grid grid-cols-1 place-content-center'>
-              <p className='text-left text-sm  capitalize text-white-100'>{user.street}</p>
+              <p className='text-left text-sm capitalize text-white-100'>{user.street}</p>
               <p className='text-left text-sm capitalize text-white-100'>
                 {user.city}, {user.country}
               </p>

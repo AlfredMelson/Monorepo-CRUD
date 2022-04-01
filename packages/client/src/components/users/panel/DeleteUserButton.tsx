@@ -10,7 +10,7 @@ export default function DeleteUserButton() {
         onClick={() => {
           setDeleteUserDialogState(true)
         }}
-        aria-label='Add New User'
+        aria-label='Delete User'
         className=' text-blue-500 transition duration-300 ease-in-out hover:text-blue-400  focus:text-blue-400 focus:outline-none  active:text-blue-400'>
         <DeleteUserIcon />
       </button>
