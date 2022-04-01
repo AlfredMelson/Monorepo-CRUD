@@ -1,18 +1,17 @@
 import { AnimatePresence } from 'framer-motion'
 import React, { useState } from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
+import { RecoilRoot } from 'recoil'
 import { AppLayout } from './components'
 import { UserProvider } from './context'
-import { Mismatch, UserCreation, UserList, UserUpdate } from './pages'
-import { trpc } from './trpc'
-// import './style/index.css'
-
-const client = new QueryClient()
+import { Mismatch, UserCreation, Users, UserUpdate } from './pages'
+import { trpc } from './utils'
 
 function App() {
   const location = useLocation()
+  const [queryClient] = useState(() => new QueryClient())
 
   const [trpcClient] = useState(() =>
     trpc.createClient({
@@ -22,12 +21,12 @@ function App() {
 
   return (
     <AnimatePresence exitBeforeEnter>
-      <trpc.Provider client={trpcClient} queryClient={client}>
-        <QueryClientProvider client={client}>
+      <trpc.Provider client={trpcClient} queryClient={queryClient}>
+        <QueryClientProvider client={queryClient}>
           <Routes key={location.pathname}>
             <Route path='/' element={<AppLayout />}>
               {/* public routes */}
-              <Route index element={<UserList />} />
+              <Route index element={<Users />} />
               <Route path='update' element={<UserUpdate />} />
               <Route path='create' element={<UserCreation />} />
               {/* mismatch route */}
@@ -40,15 +39,25 @@ function App() {
   )
 }
 
-ReactDOM.render(
+// create entry point using unique id from Document
+const rootElement = document.getElementById('root')
+// test for root element prior to invoking ReactDOM.createRoot
+if (!rootElement) throw new Error('Failed to find the root element')
+// create root
+const approot = createRoot(rootElement)
+// initial render
+
+approot.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <UserProvider>
-        <Routes>
-          <Route path='/*' element={<App />} />
-        </Routes>
-      </UserProvider>
-    </BrowserRouter>
-  </React.StrictMode>,
-  document.getElementById('root')
+    <RecoilRoot>
+      <BrowserRouter>
+        <UserProvider>
+          <Routes>
+            <Route path='/*' element={<App />} />
+          </Routes>
+        </UserProvider>
+      </BrowserRouter>
+    </RecoilRoot>
+  </React.StrictMode>
 )
+
