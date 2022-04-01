@@ -119,17 +119,17 @@
   {
     "userId": "a9be2548-15d1-4c94-acba-b69a39245f4f",
     "firstname": "bobby",
-    "lastname": "jonis",
+    "lastname": "baker",
     "email": "bobby@outlook.com",
-    "street": "44 east coastgatve",
+    "street": "44 east coast gatve",
     "city": "vilnius",
     "country": "lithuania"
   },
   {
     "userId": "ac48f196-8724-4672-887e-48b1365222bd",
-    "firstname": "urte",
-    "lastname": "jonis",
-    "email": "urtejonis@outlook.com",
+    "firstname": "kenny",
+    "lastname": "baker",
+    "email": "kenny@outlook.com",
     "street": "44 east coast gatve",
     "city": "vilnius",
     "country": "lithuania"
@@ -163,19 +163,19 @@
   },
   {
     "userId": "a9be2548-15d1-4c94-acba-39044611116d",
-    "firstname": "kestutias",
-    "lastname": "pangonis",
-    "email": "kestutias@outlook.com",
-    "street": "465 midnight gatve",
+    "firstname": "jonas",
+    "lastname": "mumford",
+    "email": "jonas@outlook.com",
+    "street": "6B lithuania gatve",
     "city": "vilnius",
     "country": "lithuania"
   },
   {
     "userId": "ac48f196-8724-4672-887e-b69a39245f4f",
-    "firstname": "indre",
-    "lastname": "pangonyte",
-    "email": "indre@outlook.com",
-    "street": "465 midnight gatve",
+    "firstname": "skirmante",
+    "lastname": "mumford",
+    "email": "skirmante@outlook.com",
+    "street": "6B lithuania gatve",
     "city": "vilnius",
     "country": "lithuania"
   }
