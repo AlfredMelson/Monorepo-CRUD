@@ -5,7 +5,7 @@ import { AddUserIcon } from '../../icons'
 export default function AddUser() {
   const setAddUserDialogState = useSetRecoilState(AddUserDialogStateAtom)
   return (
-    <div className='w-12 flex-none'>
+    <div className='w-12 place-self-center'>
       <button
         onClick={() => {
           setAddUserDialogState(true)
