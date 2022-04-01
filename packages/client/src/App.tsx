@@ -7,7 +7,7 @@ import { RecoilRoot } from 'recoil'
 import { AppLayout } from './components'
 import { UserProvider } from './context'
 import { trpc } from './hooks'
-import { Mismatch, UserCreation, Users, UserUpdate } from './pages'
+import { Mismatch, Users } from './pages'
 
 function App() {
   const location = useLocation()
@@ -27,8 +27,6 @@ function App() {
             <Route path='/' element={<AppLayout />}>
               {/* public routes */}
               <Route index element={<Users />} />
-              <Route path='update' element={<UserUpdate />} />
-              <Route path='create' element={<UserCreation />} />
               {/* mismatch route */}
               <Route path='*' element={<Mismatch />} />
             </Route>
