@@ -23,13 +23,20 @@ const appRouter = trpc
   })
   // read all users
   .query('getUsers', {
-    // initial input value set to 10 by default
-    input: z.number().default(10),
-    resolve({ input }: any) {
+    resolve() {
       // slice the last 10 users
-      return userDB.allUsers.slice(-input)
+      return userDB.allUsers
     }
   })
+  // read last 10 users
+  // .query('getUsers', {
+  //   // initial input value set to 10 by default
+  //   input: z.number().default(10),
+  //   resolve({ input }: any) {
+  //     // slice the last 10 users
+  //     return userDB.allUsers.slice(-input)
+  //   }
+  // })
   // create user
   .mutation('addUser', {
     input: z.object({
