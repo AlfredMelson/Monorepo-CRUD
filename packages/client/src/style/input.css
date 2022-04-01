@@ -9,6 +9,7 @@
 
 body.loading * {
   transition: none !important;
+  background-color: #0d1117;
 }
 
 body {
@@ -18,8 +19,56 @@ body {
   color: #fff;
 }
 
-.layout-background {
-  background-image: url('/public/assets/bg-pattern-login.png');
-  background-position: top center;
-  background-attachment: fixed;
+@layer components {
+  /* .tooltip {
+    @apply absolute left-14 m-2 w-auto min-w-max origin-left scale-0 rounded-md
+    bg-gray-900 p-2 
+    text-xs font-bold 
+    text-white shadow-md transition-all duration-100;
+  } */
+
+  .user-list-group {
+    border-radius: 0;
+    border-bottom: 1px solid #161b22;
+    background-color: #21262d;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    transition: background-color 350ms ease-out;
+    /* min-width: 540px; */
+  }
+
+  .user-list-group:hover {
+    background-color: #262c33;
+  }
+
+  .user-list-group:first-child {
+    border-radius: 4px 4px 0 0;
+
+    background-color: #21262d;
+    transition: background-color 350ms ease-out;
+  }
+  .user-list-group:first-child:hover {
+    background-color: #262c33;
+  }
+
+  .user-list-group:last-child {
+    border-radius: 0 0 4px 4px;
+    border-bottom: none;
+    background-color: #21262d;
+    transition: background-color 350ms ease-out;
+  }
+  .user-list-group:last-child:hover {
+    background-color: #262c33;
+  }
+
+  .user-list-group:only-child {
+    border-radius: 4px;
+    background-color: #21262d;
+    transition: background-color 350ms ease-out;
+    border-bottom: none;
+  }
+
+  .user-list-group:only-child:hover {
+    background-color: #262c33;
+  }
 }
+
