@@ -1,73 +1,44 @@
 import { atom } from 'recoil'
 
 /**
- * Recoil managed state representing errors during admin login
- *
  * @return {Object} a writeable RecoilState object
  * @bug Objects stored in atoms will freeze in development mode when bugs are detected
  *
  * Utilise hooks to manage state changes and notify components subscribing to re-render.
  *
  */
-export const loginAlertErrorAtom = atom<boolean>({
-  key: 'loginAlertError',
+export const updateUserAlertErrorAtom = atom<boolean>({
+  key: 'UpdateUserAlertError',
   default: false
 })
-// const [loginAlertError, setLoginAlertError] = useRecoilState(loginAlertErrorAtom)
-// const setLoginAlertError = useSetRecoilState(loginAlertErrorAtom)
-// const loginAlertError = useRecoilValue(loginAlertErrorAtom)
-// const resetLoginAlertError = useResetRecoilState(loginAlertErrorAtom)
+// const [UpdateUserAlertError, setUpdateUserAlertError] = useRecoilState(updateUserAlertErrorAtom)
+// const setUpdateUserAlertError = useSetRecoilState(updateUserAlertErrorAtom)
+// const UpdateUserAlertError = useRecoilValue(updateUserAlertErrorAtom)
+// const resetUpdateUserAlertError = useResetRecoilState(updateUserAlertErrorAtom)
 
-/**
- * Recoil managed state representing errors during admin login
- *
- * @return {Object} a writeable RecoilState object
- * @bug Objects stored in atoms will freeze in development mode when bugs are detected
- *
- * Utilise hooks to manage state changes and notify components subscribing to re-render.
- *
- */
-export const loginErrorMessageAtom = atom<string>({
-  key: 'loginErrorMessage',
+export const updateUserErrorMessageAtom = atom<string>({
+  key: 'updateUserErrorMessage',
   default: ''
 })
-// const [loginErrorMessage, setLoginErrorMessage] = useRecoilState(loginErrorMessageAtom)
-// const setLoginErrorMessage = useSetRecoilState(loginErrorMessageAtom)
-// const loginErrorMessage = useRecoilValue(loginErrorMessageAtom)
-// const resetLoginErrorMessage = useResetRecoilState(loginErrorMessageAtom)
+// const [updateUserErrorMessage, setUpdateUserErrorMessage] = useRecoilState(updateUserErrorMessageAtom)
+// const setUpdateUserErrorMessage = useSetRecoilState(updateUserErrorMessageAtom)
+// const updateUserErrorMessage = useRecoilValue(updateUserErrorMessageAtom)
+// const resetUpdateUserErrorMessage = useResetRecoilState(updateUserErrorMessageAtom)
 
-/**
- * Recoil managed state representing errors during admin login
- *
- * @return {Object} a writeable RecoilState object
- * @bug Objects stored in atoms will freeze in development mode when bugs are detected
- *
- * Utilise hooks to manage state changes and notify components subscribing to re-render.
- *
- */
-export const logoutAlertErrorAtom = atom<boolean>({
-  key: 'logoutAlertError',
+export const deleteUserAlertErrorAtom = atom<boolean>({
+  key: 'deleteUserAlertError',
   default: false
 })
-// const [logoutAlertError, setLogoutAlertError] = useRecoilState(logoutAlertErrorAtom)
-// const setLogoutAlertError = useSetRecoilState(logoutAlertErrorAtom)
-// const logoutAlertError = useRecoilValue(logoutAlertErrorAtom)
-// const resetLogoutAlertError = useResetRecoilState(logoutAlertErrorAtom)
+// const [deleteUserAlertError, setDeleteUserAlertError] = useRecoilState(deleteUserAlertErrorAtom)
+// const setDeleteUserAlertError = useSetRecoilState(deleteUserAlertErrorAtom)
+// const deleteUserAlertError = useRecoilValue(deleteUserAlertErrorAtom)
+// const resetDeleteUserAlertError = useResetRecoilState(deleteUserAlertErrorAtom)
 
-/**
- * Recoil managed state representing errors during admin login
- *
- * @return {Object} a writeable RecoilState object
- * @bug Objects stored in atoms will freeze in development mode when bugs are detected
- *
- * Utilise hooks to manage state changes and notify components subscribing to re-render.
- *
- */
-export const logoutErrorMessageAtom = atom<string>({
-  key: 'logoutErrorMessage',
+export const deleteUserErrorMessageAtom = atom<string>({
+  key: 'deleteUserErrorMessage',
   default: ''
 })
-// const [logoutErrorMessage, setLogoutErrorMessage] = useRecoilState(logoutErrorMessageAtom)
-// const setLogoutErrorMessage = useSetRecoilState(logoutErrorMessageAtom)
-// const logoutErrorMessage = useRecoilValue(logoutErrorMessageAtom)
-// const resetLogoutErrorMessage = useResetRecoilState(logoutErrorMessageAtom)
+// const [deleteUserErrorMessage, setDeleteUserErrorMessage] = useRecoilState(deleteUserErrorMessageAtom)
+// const setDeleteUserErrorMessage = useSetRecoilState(deleteUserErrorMessageAtom)
+// const deleteUserErrorMessage = useRecoilValue(deleteUserErrorMessageAtom)
+// const resetDeleteUserErrorMessage = useResetRecoilState(deleteUserErrorMessageAtom)
