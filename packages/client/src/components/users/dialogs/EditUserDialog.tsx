@@ -28,7 +28,7 @@ function EditUserDialog() {
               <div className='relative flex w-full flex-col rounded bg-grey-700 shadow-lg outline-none focus:outline-none'>
                 <div className='flex items-start justify-between p-5'>
                   <motion.div variants={usersCardHeading}>
-                    <DialogHeader title='Add New User' />
+                    <DialogHeader title='Edit User' />
                   </motion.div>
                   <button
                     onClick={() => setEditUserDialogState(false)}
