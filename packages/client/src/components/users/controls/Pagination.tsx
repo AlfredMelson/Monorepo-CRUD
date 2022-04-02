@@ -1,6 +1,8 @@
+import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { filteredUserStateSelector, paginatedUserListAtom } from '../../../recoil-state'
+import { usersCardComponents } from '../../../style'
 import { Paginate } from '../../../utils'
 import { ChevronLeftIcon, ChevronRightIcon } from '../../icons'
 
@@ -37,20 +39,16 @@ export default function Pagination() {
   }, [page, filteredUserState])
 
   return (
-    <>
+    <motion.div variants={usersCardComponents} layout className='col-span-1 col-start-2'>
       {numPages > 1 && (
         <div className='flex items-center justify-between pt-2'>
           <div className='flex flex-1 justify-between sm:hidden'>
-            <a
-              href='#'
-              className=' inline-flex items-center px-4 text-sm font-medium text-blue-500 transition duration-300 ease-in-out hover:text-blue-400  focus:text-blue-400 focus:outline-none active:text-blue-400 '>
+            <button className=' inline-flex items-center px-4 text-sm font-medium text-blue-500 transition duration-300 ease-in-out hover:text-blue-400  focus:text-blue-400 focus:outline-none active:text-blue-400 '>
               Previous
-            </a>
-            <a
-              href='#'
-              className=' ml-3 inline-flex items-center px-4 text-sm font-medium text-blue-500 transition duration-300 ease-in-out hover:text-blue-400  focus:text-blue-400 focus:outline-none active:text-blue-400'>
+            </button>
+            <button className=' ml-3 inline-flex items-center px-4 text-sm font-medium text-blue-500 transition duration-300 ease-in-out hover:text-blue-400  focus:text-blue-400 focus:outline-none active:text-blue-400'>
               Next
-            </a>
+            </button>
           </div>
           <div className='hidden sm:flex sm:flex-1 sm:items-center sm:justify-around'>
             <div>
@@ -74,10 +72,9 @@ export default function Pagination() {
 
                 {numPages < 3 &&
                   Array.from(Array(numPages), (x, i) => i + 1).map((pageNum) => (
-                    <a
+                    <button
                       key={pageNum}
                       onClick={() => setPage(pageNum)}
-                      href='#'
                       aria-current='page'
                       className='-indigo-500  z-10 inline-flex items-center px-4 text-sm font-medium text-blue-500 transition duration-300 ease-in-out hover:text-blue-400 focus:text-blue-400 focus:outline-none active:text-blue-400'>
                       {page === pageNum ? (
@@ -85,7 +82,7 @@ export default function Pagination() {
                       ) : (
                         pageNum
                       )}
-                    </a>
+                    </button>
                   ))}
 
                 {page !== numPages ? (
@@ -109,6 +106,6 @@ export default function Pagination() {
           </div>
         </div>
       )}
-    </>
+    </motion.div>
   )
 }

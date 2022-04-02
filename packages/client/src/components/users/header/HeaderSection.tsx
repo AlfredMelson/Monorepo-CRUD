@@ -6,7 +6,7 @@ import SearchUsers from './SearchUsers'
 
 export default function HeaderSection() {
   return (
-    <motion.div variants={usersCardComponents} className='flex w-full p-4'>
+    <motion.div variants={usersCardComponents} layout className='flex w-full px-4 pt-6 pb-2'>
       <LogoAppName />
       <AddUser />
       <SearchUsers />

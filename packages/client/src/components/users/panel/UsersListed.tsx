@@ -12,8 +12,8 @@ const UsersListed = () => {
   const paginatedUserList = useRecoilValue(paginatedUserListAtom)
 
   return (
-    <motion.div variants={usersCardComponents}>
-      <motion.ul variants={usersCardListContainer} layout role='list'>
+    <motion.div variants={usersCardComponents} layout>
+      <motion.ul variants={usersCardListContainer} role='list'>
         {paginatedUserList.map((user: IUser, index: number) => (
           <motion.li
             key={index}
