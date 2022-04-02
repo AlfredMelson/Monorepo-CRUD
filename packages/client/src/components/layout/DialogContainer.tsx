@@ -5,7 +5,7 @@ import {
   EditUserDialogStateAtom,
   SearchUserDialogStateAtom
 } from '../../recoil-state'
-import { AddUserDialog, DeleteUserDialog, EditUserDialog, SearchUserDialog } from '../users/dialogs'
+import { AddUserDialog, DeleteUserDialog, EditUserDialog } from '../users/dialogs'
 
 export default function DialogContainer() {
   const addUserDialogState = useRecoilValue(AddUserDialogStateAtom)
@@ -15,7 +15,6 @@ export default function DialogContainer() {
   return (
     <>
       {addUserDialogState && <AddUserDialog />}
-      {searchUserDialogState && <SearchUserDialog />}
       {editUserDialogState && <EditUserDialog />}
       {deleteUserDialogState && <DeleteUserDialog />}
     </>

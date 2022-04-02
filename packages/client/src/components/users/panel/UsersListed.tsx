@@ -1,6 +1,7 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { paginatedUserListAtom, selectedUserAtom } from '../../../recoil-state'
+import { usersCardComponents, usersCardList, usersCardListContainer } from '../../../style'
 import { IUser } from '../../../types/User'
 import DeleteUserButton from './DeleteUserButton'
 import EditUserButton from './EditUserButton'
@@ -10,33 +11,13 @@ const UsersListed = () => {
   const setSelectedUser = useSetRecoilState(selectedUserAtom)
   const paginatedUserList = useRecoilValue(paginatedUserListAtom)
 
-  const container = {
-    hidden: { opacity: 1 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.5
-      }
-    }
-  }
-
-  const individual = {
-    initial: { y: 20, opacity: 0 },
-    animate: { y: 0, opacity: 1 },
-    exit: { opacity: 0 }
-  }
-
   return (
-    <AnimatePresence exitBeforeEnter>
-      <motion.ul variants={container} initial='hidden' animate='visible' role='list'>
+    <motion.div variants={usersCardComponents}>
+      <motion.ul variants={usersCardListContainer} layout role='list'>
         {paginatedUserList.map((user: IUser, index: number) => (
           <motion.li
-            variants={individual}
-            initial='initial'
-            animate='animate'
-            exit='exit'
             key={index}
+            variants={usersCardList}
             onClick={() => setSelectedUser(user.userId)}
             className='user-list-group grid w-full grid-cols-[50px_160px_160px_40px_40px] place-content-between gap-2 py-4'>
             <UserAvatar
@@ -69,7 +50,7 @@ const UsersListed = () => {
           </motion.li>
         ))}
       </motion.ul>
-    </AnimatePresence>
+    </motion.div>
   )
 }
 export default UsersListed
