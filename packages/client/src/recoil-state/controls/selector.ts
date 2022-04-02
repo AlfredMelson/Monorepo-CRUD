@@ -1,6 +1,7 @@
 import { atom, selector } from 'recoil'
 import { IUser } from '../../types/User'
 import { SortFilteredList } from '../../utils'
+import SearchFilter from '../../utils/SearchFilter'
 import UserFilter from '../../utils/UserFilter'
 
 /**
@@ -63,14 +64,22 @@ export const filteredUserStateSelector = selector({
     const sort: 'alphabetical' | 'reverse' = get(alphabeticalSortAtom)
     const filter = get(userFilterStateAtom)
     const filteredUsers = UserFilter(allUsers)
+    const searchTerm = get(searchFieldStateAtom)
+    const userSearch = SearchFilter(allUsers, searchTerm)
 
     if (sort === 'alphabetical') {
-      return SortFilteredList(filteredUsers.all)
+      if (searchTerm === '') {
+        return SortFilteredList(filteredUsers.all)
+      } else {
+        return SortFilteredList(userSearch)
+      }
     }
-
     if (sort === 'reverse') {
-      const sorted = SortFilteredList(filteredUsers.all)
-      return sorted?.reverse()
+      if (searchTerm === '') {
+        return SortFilteredList(filteredUsers.all).reverse()
+      } else {
+        return SortFilteredList(userSearch).reverse()
+      }
     }
   }
 })
