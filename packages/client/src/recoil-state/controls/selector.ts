@@ -47,6 +47,15 @@ export const userFilterStateAtom = atom<string>({
 // const userFilterState = useRecoilValue(userFilterStateAtom)
 // const resetUserFilterState= useResetRecoilState(userFilterStateAtom)
 
+export const searchFieldStateAtom = atom<string>({
+  key: 'searchFieldState',
+  default: ''
+})
+// const [searchFieldState, setSearchFieldState] = useRecoilState(searchFieldStateAtom)
+// const setSearchFieldState = useSetRecoilState(searchFieldStateAtom)
+// const searchFieldState = useRecoilValue(searchFieldStateAtom)
+// const resetSearchFieldState = useResetRecoilState(searchFieldStateAtom)
+
 export const filteredUserStateSelector = selector({
   key: 'filteredUserState',
   get: async ({ get }) => {

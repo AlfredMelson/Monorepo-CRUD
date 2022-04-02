@@ -34,6 +34,7 @@ module.exports = {
         'blue-900': '#051d4d'
       }
     }
-  }
+  },
+  plugins: [require('@tailwindcss/forms')]
 }
 
