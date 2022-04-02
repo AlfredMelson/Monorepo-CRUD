@@ -5,9 +5,8 @@ import { usersCardComponents, usersCardList, usersCardListContainer } from '../.
 import { IUser } from '../../../types/User'
 import DeleteUserButton from './DeleteUserButton'
 import EditUserButton from './EditUserButton'
-import UserAvatar from './UserAvatar'
 
-const UsersListed = () => {
+const User = () => {
   const setSelectedUser = useSetRecoilState(selectedUserAtom)
   const paginatedUserList = useRecoilValue(paginatedUserListAtom)
 
@@ -20,19 +19,16 @@ const UsersListed = () => {
             variants={usersCardList}
             onClick={() => setSelectedUser(user.userId)}
             className='user-list-group grid w-full grid-cols-[50px_160px_160px_40px_40px] place-content-between gap-2 py-4'>
-            <UserAvatar
-              firstname={user.firstname}
-              lastname={user.lastname}
-              userId={''}
-              email={''}
-              street={''}
-              city={''}
-              country={''}
-            />
+            <div className='col-span-1 ml-4 grid h-10 w-10 grid-cols-1 place-items-center self-center rounded bg-gold-50'>
+              <p className='lg font-bold uppercase text-black-100'>
+                {user.firstname.substring(0, 1)}
+                {user.lastname.substring(0, 1)}
+              </p>
+            </div>
             <div className='col-span-1 grid grid-cols-1 place-content-center'>
-              <h6 className='text-md text-left capitalize text-gold-50'>
+              <p className='text-md text-left capitalize text-gold-50'>
                 {user.firstname} {user.lastname}
-              </h6>
+              </p>
               <p className='text-left text-sm text-white-50'>{user.email}</p>
             </div>
             <div className='col-span-1 grid grid-cols-1 place-content-center'>
@@ -53,5 +49,5 @@ const UsersListed = () => {
     </motion.div>
   )
 }
-export default UsersListed
+export default User
 

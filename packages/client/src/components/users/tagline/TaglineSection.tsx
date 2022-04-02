@@ -24,7 +24,7 @@ export default function TaglineSection() {
         <motion.h6
           variants={usersCardComponents}
           layout
-          className='mt-8 mb-14 text-2xl font-semibold text-white-50'>
+          className='mt-9 mb-14 text-2xl font-semibold text-white-50'>
           Current User List
         </motion.h6>
       )}

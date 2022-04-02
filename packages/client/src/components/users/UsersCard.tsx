@@ -4,8 +4,8 @@ import { trpc } from '../../hooks'
 import { userStateAtom } from '../../recoil-state'
 import { PanelControls } from './controls'
 import { HeaderSection } from './header'
-import { UsersListed } from './panel'
 import { TaglineSection } from './tagline'
+import { User } from './user'
 
 const UsersCard = () => {
   const setUserState = useSetRecoilState(userStateAtom)
@@ -21,7 +21,7 @@ const UsersCard = () => {
     <>
       <HeaderSection />
       <TaglineSection />
-      <UsersListed />
+      <User />
       <PanelControls />
     </>
   )
