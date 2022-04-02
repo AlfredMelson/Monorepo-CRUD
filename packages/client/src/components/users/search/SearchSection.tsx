@@ -1,9 +1,19 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
 import { useRecoilState, useResetRecoilState, useSetRecoilState } from 'recoil'
-import { searchFieldStateAtom, SearchUserDialogStateAtom } from '../../../recoil-state'
+import {
+  searchFieldStateAtom,
+  searchPreferenceStateAtom,
+  SearchUserDialogStateAtom
+} from '../../../recoil-state'
 import { usersCardSearch } from '../../../style'
 import CloseIcon from '../../icons/CloseIcon'
+
+export const searchOptions = [
+  { index: 1, label: 'Search by First name', field: 'firstname' },
+  { index: 2, label: 'Search by Last name', field: 'lastname' },
+  { index: 3, label: 'Search by City', field: 'city' },
+  { index: 4, label: 'Search by Country', field: 'country' }
+]
 
 export default function SearchSection() {
   const setSearchUserDialogState = useSetRecoilState(SearchUserDialogStateAtom)
@@ -11,7 +21,8 @@ export default function SearchSection() {
   const [searchFieldState, setSearchFieldState] = useRecoilState(searchFieldStateAtom)
   const resetSearchFieldState = useResetRecoilState(searchFieldStateAtom)
 
-  const [searchInput, setSearchInput] = useState<number>(1)
+  const [searchPreferenceState, setSearchPreferenceState] =
+    useRecoilState(searchPreferenceStateAtom)
 
   const handleChange = (e: any) => {
     setSearchFieldState(e.target.value)
@@ -20,13 +31,6 @@ export default function SearchSection() {
     resetSearchFieldState(), setSearchUserDialogState(false)
   }
   console.log('searchFieldState', searchFieldState)
-
-  const searchPreference = [
-    { index: 1, label: 'Search by First name' },
-    { index: 2, label: 'Search by Last name' },
-    { index: 3, label: 'Search by City' },
-    { index: 4, label: 'Search by Country' }
-  ]
 
   return (
     <motion.div
@@ -52,10 +56,10 @@ export default function SearchSection() {
                 <input
                   className='form-radio'
                   type='radio'
-                  checked={searchInput === 1}
+                  checked={searchPreferenceState === 1}
                   name='radio-direct'
                   value='1'
-                  onClick={() => setSearchInput(1)}
+                  onClick={() => setSearchPreferenceState(1)}
                 />
                 <span className='ml-2'>first name</span>
               </label>
@@ -65,10 +69,10 @@ export default function SearchSection() {
                 <input
                   className='form-radio'
                   type='radio'
-                  checked={searchInput === 2}
+                  checked={searchPreferenceState === 2}
                   name='radio-direct'
                   value='2'
-                  onClick={() => setSearchInput(2)}
+                  onClick={() => setSearchPreferenceState(2)}
                 />
                 <span className='ml-2'>last name</span>
               </label>
@@ -78,10 +82,10 @@ export default function SearchSection() {
                 <input
                   className='form-radio'
                   type='radio'
-                  checked={searchInput === 3}
+                  checked={searchPreferenceState === 3}
                   name='radio-direct'
                   value='3'
-                  onClick={() => setSearchInput(3)}
+                  onClick={() => setSearchPreferenceState(3)}
                 />
                 <span className='ml-2'>city</span>
               </label>
@@ -91,10 +95,10 @@ export default function SearchSection() {
                 <input
                   className='form-radio'
                   type='radio'
-                  checked={searchInput === 4}
+                  checked={searchPreferenceState === 4}
                   name='radio-direct'
                   value='4'
-                  onClick={() => setSearchInput(4)}
+                  onClick={() => setSearchPreferenceState(4)}
                 />
                 <span className='ml-2'>country</span>
               </label>
@@ -106,7 +110,7 @@ export default function SearchSection() {
         <input
           type='search'
           className='w-full rounded border-transparent bg-black-50 transition duration-300 ease-in-out focus:border-gold-50 focus:bg-black-50 focus:ring-0'
-          placeholder={searchPreference[searchInput - 1].label}
+          placeholder={searchOptions[searchPreferenceState - 1].label}
           onChange={handleChange}
         />
       </div>

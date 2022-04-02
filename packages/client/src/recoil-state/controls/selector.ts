@@ -57,6 +57,15 @@ export const searchFieldStateAtom = atom<string>({
 // const searchFieldState = useRecoilValue(searchFieldStateAtom)
 // const resetSearchFieldState = useResetRecoilState(searchFieldStateAtom)
 
+export const searchPreferenceStateAtom = atom<number>({
+  key: 'searchPreferenceState',
+  default: 1
+})
+// const [searchPreferenceState, setSearchPreferenceState] = useRecoilState(searchPreferenceStateAtom)
+// const setSearchPreferenceState = useSetRecoilState(searchPreferenceStateAtom)
+// const searchPreferenceState = useRecoilValue(searchPreferenceStateAtom)
+// const resetSearchPreferenceState = useResetRecoilState(searchPreferenceStateAtom)
+
 export const filteredUserStateSelector = selector({
   key: 'filteredUserState',
   get: async ({ get }) => {
@@ -65,7 +74,8 @@ export const filteredUserStateSelector = selector({
     const filter = get(userFilterStateAtom)
     const filteredUsers = UserFilter(allUsers)
     const searchTerm = get(searchFieldStateAtom)
-    const userSearch = SearchFilter(allUsers, searchTerm)
+    const searchPreference = get(searchPreferenceStateAtom)
+    const userSearch = SearchFilter(allUsers, searchTerm, searchPreference)
 
     if (sort === 'alphabetical') {
       if (searchTerm === '') {
