@@ -8,8 +8,16 @@ export default function TaglineSection() {
   const [searchUserDialogState, setSearchUserDialogState] =
     useRecoilState(SearchUserDialogStateAtom)
 
+  const closeSearch = (event: any) => {
+    if (event.keyCode === 27 || event.currentTarget === event.target) {
+      setSearchUserDialogState(false)
+    }
+  }
+
+  window.addEventListener('keydown', (event) => closeSearch(event))
+
   return (
-    <LayoutGroup>
+    <div onClick={(event) => closeSearch(event)}>
       {searchUserDialogState ? (
         <motion.div
           variants={usersCardComponents}
@@ -42,7 +50,7 @@ export default function TaglineSection() {
           Current User List
         </motion.h6>
       )}
-    </LayoutGroup>
+    </div>
   )
 }
 
