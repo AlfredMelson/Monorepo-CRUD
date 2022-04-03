@@ -34,13 +34,21 @@ export const usersCardComponents = {
   }
 }
 
-export const usersCardSearch = {
+export const userSearchCardContainer = {
   hidden: { opacity: 0 },
   visible: {
+    opacity: 1
+  }
+}
+
+export const userSearchCard = {
+  hidden: { opacity: 0, height: 0 },
+  visible: {
     opacity: 1,
+    height: 'auto',
     transition: {
-      duration: 0.7,
-      ease: [0.6, -0.05, 0.01, 0.99]
+      duration: 0.8,
+      ease: [0.04, 0.62, 0.23, 0.98]
     }
   }
 }
