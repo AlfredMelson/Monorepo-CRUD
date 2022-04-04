@@ -35,7 +35,7 @@ export default function AddUserContent() {
   const [cityHelperText, setCityHelperText] = useState<string>('')
 
   // country input state
-  const [country, setCountry] = useState('BE')
+  const [country, setCountry] = useState('LT')
   const [countryHelperText, setCountryHelperText] = useState<string>('')
 
   console.log(
@@ -117,7 +117,7 @@ export default function AddUserContent() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className='opacity-100'>
+    <div className='relative flex-auto p-6 opacity-100'>
       <motion.div variants={inputFieldTitle}>
         <div className='mx-1 grid grid-cols-2 gap-x-5 gap-y-4'>
           <motion.div variants={inputFieldTitle} className='col-span-1 col-start-1 row-start-1'>
