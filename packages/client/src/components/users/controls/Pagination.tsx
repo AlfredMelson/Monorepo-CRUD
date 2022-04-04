@@ -70,7 +70,7 @@ export default function Pagination() {
                   </button>
                 )}
 
-                {numPages < 3 &&
+                {numPages < 5 &&
                   Array.from(Array(numPages), (x, i) => i + 1).map((pageNum) => (
                     <button
                       key={pageNum}
