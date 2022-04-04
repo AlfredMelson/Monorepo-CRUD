@@ -17,8 +17,7 @@ export default function Collocation() {
 
   return (
     <motion.div variants={usersCardFooter} layout className='col-span-1 col-start-1'>
-      {/* {userState?.length >= 2 && ( */}
-      {filteredUserState?.length !== 0 && (
+      {filteredUserState && filteredUserState.length >= 2 && (
         <div className='justify-center rounded-lg text-lg' role='group' aria-label='user sorting'>
           {sortData.map((sort) => (
             <button
@@ -33,11 +32,11 @@ export default function Collocation() {
               type='button'
               className='first:mr-3 last:ml-3'>
               {alphabeticalSort === sort.value ? (
-                <span className='text-white-50 transition duration-300 ease-in-out '>
+                <span className='text-white-50 transition duration-300 ease-in-out'>
                   {sort.icon}
                 </span>
               ) : (
-                <span className='text-blue-500 transition duration-300 ease-in-out  hover:text-blue-400'>
+                <span className='text-blue-500 transition duration-300 ease-in-out hover:text-blue-400'>
                   {sort.icon}
                 </span>
               )}
