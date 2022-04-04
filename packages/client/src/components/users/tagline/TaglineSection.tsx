@@ -8,23 +8,25 @@ export default function TaglineSection() {
   const searchUserDialogState = useRecoilValue(SearchUserDialogStateAtom)
 
   return (
-    <motion.section variants={usersCardTagline} layout>
-      <AnimatePresence exitBeforeEnter>
+    <motion.section variants={usersCardTagline}>
+      <AnimatePresence>
         {searchUserDialogState ? (
           <motion.div
-            layout
-            variants={{ collapsed: { opacity: 0 }, open: { opacity: 1 } }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 2 }}
+            transition={{ duration: 0.3 }}
             className='search-shadow mt-6 mb-6 w-full rounded bg-grey-700 '>
-            <SearchSection />
+            <div>
+              <SearchSection />
+            </div>
           </motion.div>
         ) : (
           <motion.h6
-            layout
-            variants={{ collapsed: { opacity: 0 }, open: { opacity: 1 } }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 2 }}
+            transition={{ duration: 0.3 }}
             className='mt-10 mb-14 text-2xl font-semibold text-white-50'>
             Current User List
           </motion.h6>

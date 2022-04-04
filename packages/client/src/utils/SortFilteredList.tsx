@@ -5,7 +5,7 @@ export default function SortFilteredList(filteredList: IUser[]) {
     first: { lastname: string },
     second: { lastname: string }
   ) {
-    const firstName = first.lastname.toUpperCase() // ignore upper and lowercase
+    const firstName = first.lastname?.toUpperCase() // ignore upper and lowercase
     const secondName = second.lastname.toUpperCase() // ignore upper and lowercase
     if (firstName < secondName) {
       return -1

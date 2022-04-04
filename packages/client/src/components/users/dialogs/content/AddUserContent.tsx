@@ -38,14 +38,13 @@ export default function AddUserContent() {
   const [country, setCountry] = useState('LT')
   const [countryHelperText, setCountryHelperText] = useState<string>('')
 
-  console.log(
-    firstnameHelperText,
-    lastnameHelperText,
-    emailHelperText,
-    streetHelperText,
-    cityHelperText,
-    countryHelperText
-  )
+  console.log(firstnameHelperText)
+  console.log(lastnameHelperText)
+  console.log(emailHelperText)
+  console.log(streetHelperText)
+  console.log(streetHelperText)
+  console.log(cityHelperText)
+  console.log(countryHelperText)
   // email address validation state
   const [emailValidation, setEmailValidation] = useState<boolean>(false)
 
@@ -92,24 +91,60 @@ export default function AddUserContent() {
   // if (!email) {
   //   return setEmailHelperText('Please enter an email')
   // }
-
   const addUser = trpc.useMutation('addUser')
-  const onAdd = () => {
-    addUser.mutate(
-      {
-        firstname,
-        lastname,
-        email,
-        street,
-        city,
-        country
-      },
-      {
-        onSuccess: () => {
-          client.invalidateQueries(['getUsers'])
+
+  const handleAddUser = async (event: any) => {
+    event.preventDefault()
+
+    // alert user if email address input is empty
+    // if (!firstname) {
+    //   return setEmailHelperText('Please enter an email')
+    // }
+    // // alert user if email address input is empty
+    // if (!lastname) {
+    //   return setEmailHelperText('Please enter an email')
+    // }
+    // // alert user if email address input is empty
+    // if (!street) {
+    //   return setEmailHelperText('Please enter an email')
+    // }
+    // // alert user if email address input is empty
+    // if (!city) {
+    //   return setEmailHelperText('Please enter an email')
+    // }
+    // // alert user if email address input is empty
+    // if (!country) {
+    //   return setEmailHelperText('Please enter an email')
+    // }
+
+    try {
+      addUser.mutate(
+        {
+          firstname,
+          lastname,
+          email,
+          street,
+          city,
+          country
+        },
+        {
+          onSuccess: () => {
+            client.invalidateQueries(['getUsers'])
+          }
         }
-      }
-    )
+      )
+
+      // Return JSON
+      // console.log(onAdd)
+
+      // update user list
+      // notify user has been added
+      // close dialog if positive response from server
+
+      // open error alert if there is a caught error
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const myRef = createRef<HTMLDivElement>()
@@ -222,7 +257,7 @@ export default function AddUserContent() {
           <div className='row-start-11 col-start-2 text-center'>
             <AddEmployee
               verified={formValidation}
-              onClick={onAdd}
+              onClick={handleAddUser}
               btnText='Add User'
               // submitting={submitting}
               // successSubmit={successSubmit}

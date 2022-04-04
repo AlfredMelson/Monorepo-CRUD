@@ -6,7 +6,7 @@
     "email": "vaughn@outlook.com",
     "street": "123 castle gatve",
     "city": "vilnius",
-    "country": "lithuania"
+    "country": "LT"
   },
   {
     "userId": "b38475ec-74b0-4717-a574-5ed61e8c0274",
@@ -15,7 +15,7 @@
     "email": "vejuna@outlook.com",
     "street": "123 castle gatve",
     "city": "vilnius",
-    "country": "lithuania"
+    "country": "LT"
   },
   {
     "userId": "a9be2548-e934-46a2-8648-39044611116d",
@@ -24,7 +24,7 @@
     "email": "matilda@outlook.com",
     "street": "123 castle gatve",
     "city": "vilnius",
-    "country": "lithuania"
+    "country": "LT"
   },
   {
     "userId": "ac48f196-15d1-4c94-acba-b69a39245f4f",
@@ -33,7 +33,7 @@
     "email": "vyto@outlook.com",
     "street": "321 knight gatve",
     "city": "vilnius",
-    "country": "lithuania"
+    "country": "LT"
   },
   {
     "userId": "c1cdef9a-8724-4672-887e-48b1365222bd",
@@ -42,7 +42,7 @@
     "email": "urte@outlook.com",
     "street": "321 knight gatve",
     "city": "vilnius",
-    "country": "lithuania"
+    "country": "LT"
   },
   {
     "userId": "9a6306c9-b244-472b-8ad8-48b1558262bd",
@@ -51,7 +51,7 @@
     "email": "jimmy@outlook.com",
     "street": "89 american gatve",
     "city": "vilnius",
-    "country": "lithuania"
+    "country": "LT"
   },
   {
     "userId": "b38475ec-74b0-4717-a574-85306b5e75be",
@@ -60,7 +60,7 @@
     "email": "steve@outlook.com",
     "street": "89 american gatve",
     "city": "vilnius",
-    "country": "lithuania"
+    "country": "LT"
   },
   {
     "userId": "a9be2548-e934-46a2-8648-5ed61e8c0274",
@@ -69,7 +69,7 @@
     "email": "marlin@outlook.com",
     "street": "89 american gatve",
     "city": "vilnius",
-    "country": "lithuania"
+    "country": "LT"
   },
   {
     "userId": "ac48f196-15d1-4c94-acba-39044611116d",
@@ -78,7 +78,7 @@
     "email": "kestutias@outlook.com",
     "street": "465 midnight gatve",
     "city": "vilnius",
-    "country": "lithuania"
+    "country": "LT"
   },
   {
     "userId": "c1cdef9a-8724-4672-887e-b69a39245f4f",
@@ -87,7 +87,7 @@
     "email": "indre@outlook.com",
     "street": "465 midnight gatve",
     "city": "vilnius",
-    "country": "lithuania"
+    "country": "LT"
   },
   {
     "userId": "c1cdef9a-b244-472b-8ad8-85306b5e75be",
@@ -96,7 +96,7 @@
     "email": "alfred@outlook.com",
     "street": "549 ukraine gatve",
     "city": "vilnius",
-    "country": "lithuania"
+    "country": "LT"
   },
   {
     "userId": "9a6306c9-74b0-4717-a574-5ed61e8c0274",
@@ -105,7 +105,7 @@
     "email": "vejuna@outlook.com",
     "street": "549 ukraine gatve",
     "city": "vilnius",
-    "country": "lithuania"
+    "country": "LT"
   },
   {
     "userId": "b38475ec-e934-46a2-8648-39044611116d",
@@ -114,7 +114,7 @@
     "email": "melissa@outlook.com",
     "street": "549 ukraine gatve",
     "city": "vilnius",
-    "country": "lithuania"
+    "country": "LT"
   },
   {
     "userId": "a9be2548-15d1-4c94-acba-b69a39245f4f",
@@ -123,7 +123,7 @@
     "email": "bobby@outlook.com",
     "street": "44 east coast gatve",
     "city": "vilnius",
-    "country": "lithuania"
+    "country": "LT"
   },
   {
     "userId": "ac48f196-8724-4672-887e-48b1365222bd",
@@ -132,7 +132,7 @@
     "email": "kenny@outlook.com",
     "street": "44 east coast gatve",
     "city": "vilnius",
-    "country": "lithuania"
+    "country": "LT"
   },
   {
     "userId": "c1cdef9a-b244-472b-8ad8-48b1558262bd",
@@ -141,7 +141,7 @@
     "email": "michael@outlook.com",
     "street": "11 west coast gatve",
     "city": "vilnius",
-    "country": "lithuania"
+    "country": "LT"
   },
   {
     "userId": "9a6306c9-74b0-4717-a574-85306b5e75be",
@@ -150,7 +150,7 @@
     "email": "james@outlook.com",
     "street": "11 west coast gatve",
     "city": "vilnius",
-    "country": "lithuania"
+    "country": "LT"
   },
   {
     "userId": "b38475ec-e934-46a2-8648-5ed61e8c0274",
@@ -159,7 +159,7 @@
     "email": "kevin@outlook.com",
     "street": "11 west coast gatve",
     "city": "vilnius",
-    "country": "lithuania"
+    "country": "LT"
   },
   {
     "userId": "a9be2548-15d1-4c94-acba-39044611116d",
@@ -168,7 +168,7 @@
     "email": "jonas@outlook.com",
     "street": "6B lithuania gatve",
     "city": "vilnius",
-    "country": "lithuania"
+    "country": "LT"
   },
   {
     "userId": "ac48f196-8724-4672-887e-b69a39245f4f",
@@ -177,6 +177,15 @@
     "email": "skirmante@outlook.com",
     "street": "6B lithuania gatve",
     "city": "vilnius",
-    "country": "lithuania"
+    "country": "LT"
+  },
+  {
+    "userId": "1ea0469a-4421-496e-a7dc-f77c333ef97f",
+    "firstname": "Alfred",
+    "lastname": "Melson",
+    "email": "vaughnmelson@outlook.com",
+    "street": "Bendoriu kel. 6B",
+    "city": "Vilnius",
+    "country": "LT"
   }
 ]

@@ -70,18 +70,18 @@ export const CountrySelector = React.forwardRef<
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.1 }}
-            className='absolute z-10 mt-1 max-h-80 w-full rounded-md bg-black-100 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'
+            className='absolute z-10 mt-0.5 max-h-80 w-full rounded-md bg-black-100 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'
             tabIndex={-1}
             role='listbox'
             aria-labelledby='listbox-label'
             aria-activedescendant='listbox-option-3'>
             <div className='sticky top-0 z-10 bg-black-100'>
-              <li className='relative cursor-default select-none py-2 px-3 text-white-50'>
+              <li className='relative cursor-default select-none py-1 px-1 text-white-50'>
                 <input
                   type='search'
                   name='search'
                   autoComplete={'off'}
-                  className='relative w-full cursor-default rounded bg-black-100 py-1 pl-3  text-left shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
+                  className='relative w-full cursor-default rounded border-none bg-black-100 py-1 pl-3 text-left focus:outline-none  focus:ring-gold-50'
                   placeholder={'Search'}
                   onChange={(e) => setQuery(e.target.value)}
                 />
@@ -89,14 +89,11 @@ export const CountrySelector = React.forwardRef<
               <hr />
             </div>
 
-            <div
-              className={
-                'scrollbar scrollbar-track-gray-100 scrollbar-thumb-gray-300 hover:scrollbar-thumb-gray-600 scrollbar-thumb-rounded scrollbar-thin max-h-64 overflow-y-scroll'
-              }>
+            <div className={'max-h-64 overflow-y-scroll'}>
               {AvailableCountries.filter((country) =>
                 country.title.toLowerCase().startsWith(query.toLowerCase())
               ).length === 0 ? (
-                <li className='relative cursor-default select-none py-2 pl-3  text-grey-300'>
+                <li className='relative cursor-default select-none py-2 pl-3 italic text-grey-200'>
                   None found
                 </li>
               ) : (

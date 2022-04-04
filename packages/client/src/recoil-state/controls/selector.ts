@@ -74,20 +74,24 @@ export const filteredUserStateSelector = selector({
     const filter = get(userFilterStateAtom)
     const filteredUsers = UserFilter(allUsers)
     const searchTerm = get(searchFieldStateAtom)
-    const searchPreference = get(searchPreferenceStateAtom)
-    const userSearch = SearchFilter(allUsers, searchTerm, searchPreference)
 
-    if (sort === 'alphabetical') {
-      if (searchTerm === '') {
+    if (searchTerm === '') {
+      if (sort === 'alphabetical') {
         return SortFilteredList(filteredUsers.all)
-      } else {
-        return SortFilteredList(userSearch)
+      }
+      if (sort === 'reverse') {
+        return SortFilteredList(filteredUsers.all).reverse()
       }
     }
-    if (sort === 'reverse') {
-      if (searchTerm === '') {
-        return SortFilteredList(filteredUsers.all).reverse()
-      } else {
+
+    const searchPreference = get(searchPreferenceStateAtom)
+    const userSearchParams = { allUsers, searchTerm, searchPreference }
+    const userSearch = SearchFilter(userSearchParams)
+    if (searchTerm !== '') {
+      if (sort === 'alphabetical') {
+        return SortFilteredList(userSearch)
+      }
+      if (sort === 'reverse') {
         return SortFilteredList(userSearch).reverse()
       }
     }
