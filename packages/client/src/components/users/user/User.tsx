@@ -1,7 +1,6 @@
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { paginatedUserListAtom, selectedUserAtom } from '../../../recoil-state'
-import { usersCardComponents, usersCardList, usersCardListContainer } from '../../../style'
 import { IUser } from '../../../types/User'
 import DeleteUserButton from './DeleteUserButton'
 import EditUserButton from './EditUserButton'
@@ -11,12 +10,16 @@ const User = () => {
   const paginatedUserList = useRecoilValue(paginatedUserListAtom)
 
   return (
-    <motion.div variants={usersCardComponents} layout>
-      <motion.ul variants={usersCardListContainer} role='list'>
+    <motion.ul layout>
+      <AnimatePresence>
         {paginatedUserList.map((user: IUser, index: number) => (
           <motion.li
             key={index}
-            variants={usersCardList}
+            layout
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, delay: index * 0.1 }}
             onClick={() => setSelectedUser(user.userId)}
             className='user-list-group grid w-full grid-cols-[50px_160px_160px_40px_40px] place-content-between gap-2 py-4'>
             <div className='col-span-1 ml-4 grid h-10 w-10 grid-cols-1 place-items-center self-center rounded bg-gold-50'>
@@ -45,8 +48,8 @@ const User = () => {
             </div>
           </motion.li>
         ))}
-      </motion.ul>
-    </motion.div>
+      </AnimatePresence>
+    </motion.ul>
   )
 }
 export default User

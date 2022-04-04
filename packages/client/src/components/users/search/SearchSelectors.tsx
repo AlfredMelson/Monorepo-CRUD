@@ -37,10 +37,10 @@ export default function SearchSelectors() {
               setSelected(option.index)
             }}
             aria-label='Close Search Area'
-            className='text-md relative cursor-pointer list-none py-2 text-white-50 transition duration-300 ease-in-out hover:text-white-100 '>
+            className='text-md relative cursor-pointer list-none py-2 font-medium'>
             <span
               className='absolute left-1 right-0 -top-3 z-10'
-              style={{ color: selected === option.index ? ' #ffe57f ' : '#fff' }}>
+              style={{ color: selected === option.index ? ' #fff' : '#1f6feb' }}>
               {option.label}
             </span>
             {focused === option.index && (
