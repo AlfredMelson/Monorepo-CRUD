@@ -15,24 +15,17 @@ export default function AddEmployee({
   submitting,
   successSubmit
 }: IAddEmployee) {
-  const [loginHover, setLoginHover] = useState(false)
+  const [hover, setHover] = useState(false)
 
   return (
-    <div>
-      <div
-        style={{
-          position: 'relative',
-          margin: '20px 0 0',
-          padding: 0
-        }}>
-        <button
-          disabled={!verified || submitting}
-          onClick={onClick}
-          onMouseEnter={() => setLoginHover(true)}
-          onMouseLeave={() => setLoginHover(false)}>
-          {!submitting ? btnText : successSubmit && 'Check Icon'}
-        </button>
-      </div>
+    <div className='relative mt-4'>
+      <button
+        disabled={!verified || submitting}
+        onClick={onClick}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}>
+        {!submitting ? btnText : successSubmit && 'Check Icon'}
+      </button>
     </div>
   )
 }

@@ -27,46 +27,29 @@ body {
     text-white shadow-md transition-all duration-100;
   } */
 
+  /*
+ * Change Autocomplete Styles in WebKit Browsers
+ * @author Geoff Graham (Updated on Apr 26, 2019)
+ * https://css-tricks.com/snippets/css/change-autocomplete-styles-webkit-browsers/
+ */
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    border: none;
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
   .search-shadow {
     box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-  }
-  .form-checkbox,
-  .form-radio {
-    appearance: none;
-    padding: 0;
-    color-adjust: exact;
-    display: inline-block;
-    vertical-align: middle;
-    background-origin: border-box;
-    user-select: none;
-    flex-shrink: 0;
-    height: 0.9rem /* 16px */;
-    width: 0.9rem /* 16px */;
-    color: #ffe57f;
-    background-color: #000;
-    border-color: transparent;
-    border-width: 1px;
-    --tw-shadow: 0 0 #000;
-  }
-  .form-radio {
-    border-radius: 100%;
-  }
-  .form-checkbox:focus,
-  .form-radio:focus {
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-    --tw-ring-inset: var(--tw-empty, /*!*/ /*!*/);
-    --tw-ring-offset-width: 2px;
-    --tw-ring-offset-color: transparent;
-    --tw-ring-color: transparent;
-    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width)
-      var(--tw-ring-offset-color);
-    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width))
-      var(--tw-ring-color);
-    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .form-radio:checked {
-    background-image: none;
   }
 
   .user-list-group {
