@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { filteredUserStateSelector, paginatedUserListAtom } from '../../../recoil-state'
-import { usersCardComponents } from '../../../style'
+import { usersCardFooter } from '../../../style'
 import { Paginate } from '../../../utils'
 import { ChevronLeftIcon, ChevronRightIcon } from '../../icons'
 
@@ -39,7 +39,7 @@ export default function Pagination() {
   }, [page, filteredUserState])
 
   return (
-    <motion.div variants={usersCardComponents} layout className='col-span-1 col-start-2'>
+    <motion.div variants={usersCardFooter} layout className='col-span-1 col-start-2'>
       {numPages > 1 && (
         <div className='flex items-center justify-between pt-2'>
           <div className='flex flex-1 justify-between sm:hidden'>

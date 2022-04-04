@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { alphabeticalSortAtom, filteredUserStateSelector } from '../../../recoil-state'
-import { usersCardComponents } from '../../../style'
+import { usersCardFooter } from '../../../style'
 import { ISortData } from '../../../types/User'
 import { ABCIcon, CBAIcon } from '../../icons'
 
@@ -16,7 +16,7 @@ export default function Collocation() {
   ]
 
   return (
-    <motion.div variants={usersCardComponents} layout className='col-span-1 col-start-1'>
+    <motion.div variants={usersCardFooter} layout className='col-span-1 col-start-1'>
       {/* {userState?.length >= 2 && ( */}
       {filteredUserState?.length !== 0 && (
         <div className='justify-center rounded-lg text-lg' role='group' aria-label='user sorting'>

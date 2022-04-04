@@ -1,14 +1,14 @@
-import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { AnimatePresence, motion } from 'framer-motion'
+import { useRecoilValue } from 'recoil'
 import { SearchUserDialogStateAtom } from '../../../recoil-state'
-import { usersCardComponents, userSearchCard, userSearchCardContainer } from '../../../style'
+import { usersCardTagline } from '../../../style'
 import { SearchSection } from '../search'
 
 export default function TaglineSection() {
   const searchUserDialogState = useRecoilValue(SearchUserDialogStateAtom)
 
   return (
-    <motion.section layout>
+    <motion.section variants={usersCardTagline} layout>
       <AnimatePresence exitBeforeEnter>
         {searchUserDialogState ? (
           <motion.div

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useRecoilState } from 'recoil'
 import { AddUserDialogStateAtom } from '../../../recoil-state'
-import { usersCardComponents } from '../../../style'
+import { usersCardList } from '../../../style'
 import CloseIcon from '../../icons/CloseIcon'
 import { AddUserContent } from './content'
 import { DialogHeader } from './header'
@@ -29,7 +29,7 @@ function AddUserDialog() {
             <div className='relative my-6 mx-auto w-auto max-w-3xl'>
               <div className='relative flex w-full flex-col rounded bg-grey-700 shadow-lg outline-none focus:outline-none'>
                 <div className='flex items-start justify-between p-5'>
-                  <motion.div variants={usersCardComponents}>
+                  <motion.div variants={usersCardList}>
                     <DialogHeader title='Add New User' />
                   </motion.div>
                   <button
@@ -64,7 +64,7 @@ function AddUserDialog() {
 //         <div className={style.overlay}>
 //           <div className={style.container} onClick={(event) => closeDialog(event)}>
 //             <motion.div animate={{ scale: [0.7, 1] }} exit={{ scale: 0 }} className={style.modal}>
-// <motion.div variants={usersCardComponents}>
+// <motion.div variants={usersCardList}>
 //   <DialogHeader
 //     title='Add New User'
 //     onClick={() => {

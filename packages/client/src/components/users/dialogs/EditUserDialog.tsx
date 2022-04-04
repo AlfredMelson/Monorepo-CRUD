@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useRecoilState } from 'recoil'
 import { EditUserDialogStateAtom } from '../../../recoil-state'
-import { usersCardComponents } from '../../../style'
+import { usersCardList } from '../../../style'
 import CloseIcon from '../../icons/CloseIcon'
 import { EditUserContent } from './content'
 import { DialogHeader } from './header'
@@ -27,7 +27,7 @@ function EditUserDialog() {
             <div className='relative my-6 mx-auto w-auto max-w-3xl'>
               <div className='relative flex w-full flex-col rounded bg-grey-700 shadow-lg outline-none focus:outline-none'>
                 <div className='flex items-start justify-between p-5'>
-                  <motion.div variants={usersCardComponents}>
+                  <motion.div variants={usersCardList}>
                     <DialogHeader title='Edit User' />
                   </motion.div>
                   <button

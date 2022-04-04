@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { SetStateAction, useEffect, useState } from 'react'
 import { QueryClient } from 'react-query'
 import { trpc } from '../../../../hooks'
-import { addUserFieldTitle } from '../../../../style'
+import { inputFieldTitle } from '../../../../style'
 import { REGEX_Username, regexEmailValidation } from '../../../../utils'
 import AddEmployee from '../submissions/AddEmployee'
 
@@ -131,10 +131,10 @@ export default function EditUserContent() {
 
   return (
     <div className='opacity-100'>
-      <motion.div variants={addUserFieldTitle}>
+      <motion.div variants={inputFieldTitle}>
         <div className='grid grid-cols-4'>
           <motion.div
-            variants={addUserFieldTitle}
+            variants={inputFieldTitle}
             className='col-span-2 col-start-1 row-start-1 pr-8'>
             <h6 className='mt-4 mr-0 mb-1 ml-2'>First name</h6>
           </motion.div>
@@ -150,7 +150,7 @@ export default function EditUserContent() {
             // helperText={firstnameHelperText}
             className='col-span-2 row-start-2 pr-8'
           />
-          <motion.div variants={addUserFieldTitle} className='col-span-2 col-start-3 row-start-1'>
+          <motion.div variants={inputFieldTitle} className='col-span-2 col-start-3 row-start-1'>
             <h6 className='mt-4 mr-0 mb-1 ml-2'>Last name</h6>
           </motion.div>
           <input
@@ -164,7 +164,7 @@ export default function EditUserContent() {
             // helperText={lastnameHelperText}
             className='col-span-2 col-start-3 row-start-2'
           />
-          <motion.div variants={addUserFieldTitle} className='col-span-3 col-start-1 row-start-3'>
+          <motion.div variants={inputFieldTitle} className='col-span-3 col-start-1 row-start-3'>
             <h6 className='mt-4 mr-0 mb-1 ml-2'>Email Address</h6>
           </motion.div>
           <input
@@ -178,7 +178,7 @@ export default function EditUserContent() {
             // helperText={emailHelperText}
             className='col-span-3 row-start-1 pr-4'
           />
-          <motion.div variants={addUserFieldTitle} className='col-span-3 col-start-1 row-start-4'>
+          <motion.div variants={inputFieldTitle} className='col-span-3 col-start-1 row-start-4'>
             <h6 className='mt-4 mr-0 mb-1 ml-2'>Street</h6>
           </motion.div>
           <input
@@ -192,7 +192,7 @@ export default function EditUserContent() {
             // helperText={emailHelperText}
             className='col-span-3 row-start-1 pr-4'
           />
-          <motion.div variants={addUserFieldTitle} className='col-span-3 col-start-1 row-start-5'>
+          <motion.div variants={inputFieldTitle} className='col-span-3 col-start-1 row-start-5'>
             <h6 className='mt-4 mr-0 mb-1 ml-2'>City</h6>
           </motion.div>
           <input
@@ -206,7 +206,7 @@ export default function EditUserContent() {
             // helperText={cityHelperText}
             className='col-span-3 col-start-1 row-start-5 pr-4'
           />
-          <motion.div variants={addUserFieldTitle} className='col-start-4 row-start-6'>
+          <motion.div variants={inputFieldTitle} className='col-start-4 row-start-6'>
             <h6 className='mt-4 mr-0 mb-1 ml-2'>Country</h6>
           </motion.div>
 
