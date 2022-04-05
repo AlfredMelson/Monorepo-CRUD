@@ -42,8 +42,8 @@ export const CountrySelector = React.forwardRef<
         <span className='flex items-center truncate'>
           <img
             alt={`${props.selectedValue.value}`}
-            src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${props.selectedValue.value}.svg`}
-            className={'mr-2 inline h-4 rounded'}
+            src={`/flags/${props.selectedValue.value}.svg`}
+            className={'mr-2 inline h-4 rounded-sm'}
           />
           {props.selectedValue.title}
         </span>
@@ -113,7 +113,7 @@ export const CountrySelector = React.forwardRef<
                       }}>
                       <img
                         alt={`${value.value}`}
-                        src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${value.value}.svg`}
+                        src={`/flags/${value.value}.svg`}
                         className={'mr-2 inline h-4 rounded-sm'}
                       />
 

@@ -1358,6 +1358,11 @@ input:-webkit-autofill,
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
 
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
 .bg-\[url\(\"\/assets\/bg-user-pattern\.png\"\)\] {
   background-image: url("/assets/bg-user-pattern.png");
 }
@@ -1598,6 +1603,11 @@ input:-webkit-autofill,
   color: rgb(17 88 199 / var(--tw-text-opacity));
 }
 
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
 .opacity-40 {
   opacity: 0.4;
 }
@@ -1687,6 +1697,11 @@ body {
 .hover\:bg-grey-900:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(13 17 23 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-gray-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
 .hover\:text-blue-400:hover {

@@ -252,9 +252,11 @@ export default function AddUserContent() {
               verified={formValidation}
               onClick={handleAddUser}
               btnText='Add User'
+              disabled={addUser.isLoading}
               // submitting={submitting}
               // successSubmit={successSubmit}
             />
+            {addUser.error && <p>Something went wrong! {addUser.error.message}</p>}
           </div>
         </div>
       </motion.div>
