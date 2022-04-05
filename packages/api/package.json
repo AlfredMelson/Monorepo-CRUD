@@ -3,15 +3,20 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node-dev index.ts"
+    "start": "ts-node-dev index.ts",
+    "start-prod": "ts-node index.ts"
   },
   "main": "index.ts",
+  "engines": {
+    "node": "16.13.2"
+  },
   "dependencies": {
     "@trpc/server": "^9.21.0",
+    "aws-sdk": "^2.1107.0",
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "uuid": "^8.3.2",
-    "zod": "^3.14.3"
+    "zod": "^3.14.4"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",

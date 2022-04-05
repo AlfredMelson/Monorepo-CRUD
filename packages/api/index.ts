@@ -55,7 +55,6 @@ export type AppRouter = typeof appRouter
 
 const app = express()
 app.use(cors())
-const port = 8080
 
 app.use(
   '/trpc',
@@ -68,6 +67,9 @@ app.use(
 app.get('/', (_req: Request, res: Response) => {
   res.send('Hello from Insly api-server')
 })
+
+// utilise the port aws provides or 8080
+const port = process.env.PORT || 8080
 
 app.listen(port, () => {
   console.log(`api-server listening at http://localhost:${port}`)
