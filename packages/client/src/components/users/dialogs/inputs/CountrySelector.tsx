@@ -43,7 +43,7 @@ export const CountrySelector = React.forwardRef<
           <img
             alt={`${props.selectedValue.value}`}
             src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${props.selectedValue.value}.svg`}
-            className={'mr-2 inline h-4 rounded-sm'}
+            className={'mr-2 inline h-4 rounded'}
           />
           {props.selectedValue.title}
         </span>
@@ -76,7 +76,7 @@ export const CountrySelector = React.forwardRef<
             aria-labelledby='listbox-label'
             aria-activedescendant='listbox-option-3'>
             <div className='sticky top-0 z-10 bg-black-100'>
-              <li className='relative cursor-default select-none py-1 px-1 text-white-50'>
+              <li className='relative cursor-default select-none py-1 px-1 text-black-50'>
                 <input
                   type='search'
                   name='search'
@@ -86,7 +86,7 @@ export const CountrySelector = React.forwardRef<
                   onChange={(e) => setQuery(e.target.value)}
                 />
               </li>
-              <hr />
+              <hr className='bg-black-50' />
             </div>
 
             <div className={'max-h-64 overflow-y-scroll'}>

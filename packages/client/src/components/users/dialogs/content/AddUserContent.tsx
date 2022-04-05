@@ -38,13 +38,6 @@ export default function AddUserContent() {
   const [country, setCountry] = useState('LT')
   const [countryHelperText, setCountryHelperText] = useState<string>('')
 
-  console.log(firstnameHelperText)
-  console.log(lastnameHelperText)
-  console.log(emailHelperText)
-  console.log(streetHelperText)
-  console.log(streetHelperText)
-  console.log(cityHelperText)
-  console.log(countryHelperText)
   // email address validation state
   const [emailValidation, setEmailValidation] = useState<boolean>(false)
 
