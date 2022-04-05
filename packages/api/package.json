@@ -4,15 +4,11 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node-dev index.ts",
-    "start-prod": "ts-node index.ts"
+    "build": "tsc"
   },
   "main": "index.ts",
-  "engines": {
-    "node": "16.13.2"
-  },
   "dependencies": {
     "@trpc/server": "^9.21.0",
-    "aws-sdk": "^2.1107.0",
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "uuid": "^8.3.2",
