@@ -30,7 +30,7 @@ export const paginatedUserListAtom = atom<IUser[]>({
 // const paginatedUserList = useRecoilValue(paginatedUserListAtom)
 // const resetPaginatedUserList = useResetRecoilState(paginatedUserListAtom)
 
-export const alphabeticalSortAtom = atom<'alphabetical' | 'reverse'>({
+export const alphabeticalSortAtom = atom<string>({
   key: 'alphabeticalSort',
   default: 'alphabetical'
 })
@@ -70,7 +70,7 @@ export const filteredUserStateSelector = selector({
   key: 'filteredUserState',
   get: async ({ get }) => {
     const allUsers = await get(userStateAtom)
-    const sort: 'alphabetical' | 'reverse' = get(alphabeticalSortAtom)
+    const sort = get(alphabeticalSortAtom)
     const filter = get(userFilterStateAtom)
     const filteredUsers = UserFilter(allUsers)
     const searchTerm = get(searchFieldStateAtom)

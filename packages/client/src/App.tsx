@@ -6,8 +6,8 @@ import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
 import { AppLayout } from './components'
 import { UserProvider } from './context'
-import { trpc } from './hooks'
 import { Mismatch, Users } from './pages'
+import { trpc } from './utils'
 
 function App() {
   const location = useLocation()

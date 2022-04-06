@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useRecoilState } from 'recoil'
 import { DeleteUserDialogStateAtom } from '../../../recoil-state'
-import { AddUserContent } from './content'
+import { DeleteUserContent } from './content'
 import { DialogHeader } from './header'
 
 export default function DeleteUserDialog() {
@@ -34,7 +34,7 @@ export default function DeleteUserDialog() {
                     title='Delete User'
                     onClick={() => setDeleteUserDialogState(false)}
                   />
-                  <AddUserContent />
+                  <DeleteUserContent />
                 </div>
               </div>
             </div>

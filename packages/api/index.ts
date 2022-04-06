@@ -1,59 +1,16 @@
-import express, { Request, response, Response } from 'express'
-import * as trpc from '@trpc/server'
+import express from 'express'
 import * as trpcExpress from '@trpc/server/adapters/express'
 import cors from 'cors'
-import { z } from 'zod'
-import { v4 as uuidv4 } from 'uuid'
-import { IUser } from './model/users'
-import users from './model/users.json'
-import fsPromises from 'fs/promises'
-import path from 'path'
+import { createRouter } from './middleware'
+import { userRouter } from './router/user'
 
-const userDB = {
-  allUsers: users,
-  setAllUsers: function (data: any) {
-    this.allUsers = data
-  }
-}
-
-const appRouter = trpc
-  .router()
-  // read all users
-  .query('getUsers', {
-    resolve() {
-      return userDB.allUsers
-    }
-  })
-
-  // create user
-  .mutation('addUser', {
-    input: z.object({
-      firstname: z.string(),
-      lastname: z.string(),
-      email: z.string(),
-      street: z.string(),
-      city: z.string(),
-      country: z.string()
-    }),
-    resolve({ input }: Record<string, any>) {
-      const { firstname, lastname, email, street, city, country } = input
-      const userId: string = uuidv4()
-      const newUser = { userId, firstname, lastname, email, street, city, country }
-      userDB.setAllUsers([...userDB.allUsers, newUser])
-      // write the new user to the database
-      fsPromises.writeFile(
-        // navigate from the current directory into the model directory
-        path.join(__dirname, 'model', 'users.json'),
-        // specify the data to be written
-        JSON.stringify(userDB.allUsers)
-      )
-      return newUser
-    }
-  })
+export const appRouter = createRouter().merge('user.', userRouter)
 
 export type AppRouter = typeof appRouter
 
+// express implementation
 const app = express()
+// cors implementation
 app.use(cors())
 
 app.use(
@@ -61,12 +18,10 @@ app.use(
   trpcExpress.createExpressMiddleware({
     router: appRouter,
     createContext: () => null
+    // createContext
   })
 )
-
-app.get('/', (_req: Request, res: Response) => {
-  res.send('Hello from Insly api-server')
-})
+app.get('/', (_req, res) => res.send('testing 123'))
 
 // utilise the port aws provides or 8080
 const port = process.env.PORT || 8080

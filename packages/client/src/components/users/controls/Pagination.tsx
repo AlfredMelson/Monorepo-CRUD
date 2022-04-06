@@ -91,14 +91,17 @@ export default function Pagination() {
                     className=' inline-flex items-center rounded-r-md px-2 text-sm font-medium text-blue-500 transition duration-300 ease-in-out hover:text-blue-400  focus:text-blue-400 focus:outline-none active:text-blue-400 '>
                     <span className='sr-only'>Next</span>
                     <ChevronRightIcon
-                      className='h-5 w-5 text-blue-500 transition duration-300 ease-in-out hover:text-blue-400 focus:text-blue-400 focus:outline-none active:text-blue-400'
+                      className='relative h-5 w-5 text-blue-500 transition duration-300 ease-in-out hover:text-blue-400 focus:text-blue-400 focus:outline-none active:text-blue-400'
                       aria-hidden='true'
                     />
                   </button>
                 ) : (
-                  <button className=' inline-flex items-center rounded-l-md px-2 text-sm font-medium text-grey-800'>
+                  <button className='inline-flex items-center rounded-l-md px-2 text-sm font-medium text-grey-800'>
                     <span className='sr-only'>Previous</span>
-                    <ChevronRightIcon className='h-5 w-5 text-grey-800' aria-hidden='true' />
+                    <ChevronRightIcon
+                      className='relative h-5 w-5 text-grey-800'
+                      aria-hidden='true'
+                    />
                   </button>
                 )}
               </nav>

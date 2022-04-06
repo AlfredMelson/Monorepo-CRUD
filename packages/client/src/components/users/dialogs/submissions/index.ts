@@ -1,1 +1,3 @@
-export { default as AddEmployee } from './AddEmployee'
+export { default as AddUser } from './AddUser'
+export { default as DeleteUser } from './DeleteUser'
+export { default as EditUser } from './EditUser'

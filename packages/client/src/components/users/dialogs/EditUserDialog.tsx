@@ -1,21 +1,18 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil'
-import { EditUserDialogStateAtom, selectedUserAtom } from '../../../recoil-state'
-import { AddUserContent } from './content'
+import { useRecoilState, useResetRecoilState } from 'recoil'
+import { EditUserDialogStateAtom, userIdSelectedAtom } from '../../../recoil-state'
+import { EditUserContent } from './content'
 import { DialogHeader } from './header'
 
 export default function EditUserDialog() {
   const [editUserDialogState, setEditUserDialogState] = useRecoilState(EditUserDialogStateAtom)
 
-  const selectedUser = useRecoilValue(selectedUserAtom)
-  const resetSelectedUser = useResetRecoilState(selectedUserAtom)
-
-  console.log('selectedUser', selectedUser)
+  const resetUserIdSelected = useResetRecoilState(userIdSelectedAtom)
 
   const closeDialog = (event: any) => {
     if (event.keyCode === 27 || event.currentTarget === event.target) {
       setEditUserDialogState(false)
-      resetSelectedUser()
+      resetUserIdSelected()
     }
   }
 
@@ -36,8 +33,7 @@ export default function EditUserDialog() {
               <div className='relative my-6 mx-auto w-auto max-w-3xl'>
                 <div className='relative flex w-full flex-col rounded bg-grey-700 shadow-lg outline-none focus:outline-none'>
                   <DialogHeader title='Edit User' onClick={() => setEditUserDialogState(false)} />
-                  {selectedUser.find((element) => element > 10)}
-                  <AddUserContent />
+                  <EditUserContent />
                 </div>
               </div>
             </div>

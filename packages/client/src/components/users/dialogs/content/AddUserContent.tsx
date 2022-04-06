@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion'
 import { createRef, SetStateAction, useEffect, useState } from 'react'
 import { QueryClient } from 'react-query'
-import { trpc } from '../../../../hooks'
 import { inputFieldTitle } from '../../../../style'
-import { REGEX_Username, regexEmailValidation } from '../../../../utils'
-import { AvailableCountries, IAvailableCountries } from '../inputs/countries'
+import { REGEX_Username, regexEmailValidation, trpc } from '../../../../utils'
+import { allCountries, IAllCountries } from '../inputs/countries'
 import { CountrySelector } from '../inputs/CountrySelector'
-import AddEmployee from '../submissions/AddEmployee'
+import AddUser from '../submissions/AddUser'
 
 export default function AddUserContent() {
   // update email dialog state
@@ -84,7 +83,7 @@ export default function AddUserContent() {
   // if (!email) {
   //   return setEmailHelperText('Please enter an email')
   // }
-  const addUser = trpc.useMutation('addUser')
+  const addUser = trpc.useMutation('user.add')
 
   const handleAddUser = async (event: any) => {
     event.preventDefault()
@@ -122,13 +121,10 @@ export default function AddUserContent() {
         },
         {
           onSuccess: () => {
-            client.invalidateQueries(['getUsers'])
+            client.invalidateQueries(['user.getAll'])
           }
         }
       )
-
-      // Return JSON
-      // console.log(onAdd)
 
       // update user list
       // notify user has been added
@@ -243,18 +239,20 @@ export default function AddUserContent() {
               onToggle={() => setIsOpen(!isOpen)}
               onChange={(val) => setCountry(val)}
               selectedValue={
-                AvailableCountries.find((option) => option.value === country) as IAvailableCountries
+                allCountries.find((option) => option.value === country) as IAllCountries
               }
             />
           </div>
           <div className='row-start-11 col-start-2 text-center'>
-            <AddEmployee
+            <AddUser
               verified={formValidation}
               onClick={handleAddUser}
               btnText='Add User'
+              disabled={addUser.isLoading}
               // submitting={submitting}
               // successSubmit={successSubmit}
             />
+            {addUser.error && <p>Something went wrong! {addUser.error.message}</p>}
           </div>
         </div>
       </motion.div>

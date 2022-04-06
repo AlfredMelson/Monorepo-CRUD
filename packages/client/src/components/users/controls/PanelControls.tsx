@@ -3,7 +3,7 @@ import Pagination from './Pagination'
 
 export default function PanelControls() {
   return (
-    <div className='mb-0 grid w-full grid-cols-2 px-6 pt-3 pb-0'>
+    <div className='grid h-12 w-full grid-cols-[_240px_auto] justify-items-center pt-2'>
       <Collocation />
       <Pagination />
     </div>
