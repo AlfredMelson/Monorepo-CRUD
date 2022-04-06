@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "@insly/client",
   "version": "1.0.0",
   "scripts": {
     "build": "react-scripts build",
@@ -15,14 +15,14 @@
     "@trpc/client": "^9.21.0",
     "@trpc/react": "^9.21.0",
     "@trpc/server": "^9.21.0",
-    "framer-motion": "^6.2.8",
+    "framer-motion": "^6.2.9",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-query": "^3.34.19",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
     "recoil": "^0.7.0",
-    "trpc-api": "1.0.0",
+    "@insly/api": "1.0.0",
     "zod": "^3.14.4"
   },
   "devDependencies": {

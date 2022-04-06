@@ -1,5 +1,5 @@
 {
-  "name": "trpc-api",
+  "name": "@insly/api",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {

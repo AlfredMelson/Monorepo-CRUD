@@ -1298,9 +1298,8 @@ input:-webkit-autofill,
   background-color: rgb(33 38 45 / var(--tw-bg-opacity));
 }
 
-.bg-black {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+.bg-black-100\/40 {
+  background-color: rgb(0 0 0 / 0.4);
 }
 
 .bg-black-50 {
@@ -1326,10 +1325,6 @@ input:-webkit-autofill,
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-black-100\/40 {
-  background-color: rgb(0 0 0 / 0.4);
 }
 
 .bg-\[url\(\"\/assets\/bg-user-pattern\.png\"\)\] {
@@ -1555,10 +1550,6 @@ input:-webkit-autofill,
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
-}
-
-.opacity-40 {
-  opacity: 0.4;
 }
 
 .opacity-100 {

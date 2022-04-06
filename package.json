@@ -1,15 +1,15 @@
 {
-  "name": "insly-monorepo",
+  "name": "root",
   "version": "1.0.0",
   "license": "MIT",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "start": "concurrently \"wsrun --parallel start\"",
     "clean": "lerna clean --yes && rimraf node_modules yarn.lock"
   },
-  "workspaces": [
-    "packages/*"
-  ],
   "devDependencies": {
     "@types/rimraf": "^3.0.2",
     "concurrently": "^7.1.0",
