@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion'
 import { createRef, SetStateAction, useEffect, useState } from 'react'
 import { QueryClient } from 'react-query'
-import { trpc } from '../../../../hooks'
 import { inputFieldTitle } from '../../../../style'
-import { REGEX_Username, regexEmailValidation } from '../../../../utils'
+import { REGEX_Username, regexEmailValidation, trpc } from '../../../../utils'
 import { AvailableCountries, IAvailableCountries } from '../inputs/countries'
 import { CountrySelector } from '../inputs/CountrySelector'
-import AddEmployee from '../submissions/AddEmployee'
+import AddUser from '../submissions/AddUser'
 
 export default function AddUserContent() {
   // update email dialog state
@@ -84,7 +83,7 @@ export default function AddUserContent() {
   // if (!email) {
   //   return setEmailHelperText('Please enter an email')
   // }
-  const addUser = trpc.useMutation('addUser')
+  const addUser = trpc.useMutation('user.add')
 
   const handleAddUser = async (event: any) => {
     event.preventDefault()
@@ -122,7 +121,7 @@ export default function AddUserContent() {
         },
         {
           onSuccess: () => {
-            client.invalidateQueries(['getUsers'])
+            client.invalidateQueries(['user.getAll'])
           }
         }
       )
@@ -248,7 +247,7 @@ export default function AddUserContent() {
             />
           </div>
           <div className='row-start-11 col-start-2 text-center'>
-            <AddEmployee
+            <AddUser
               verified={formValidation}
               onClick={handleAddUser}
               btnText='Add User'

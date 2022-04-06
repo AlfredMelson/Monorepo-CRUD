@@ -9,11 +9,12 @@ import { atom } from 'recoil'
  * Utilise hooks to manage state changes and notify components subscribing to re-render.
  *
  */
-export const selectedUserAtom = atom({
-  key: 'selectedUser',
-  default: []
+
+export const userIdSelectedAtom = atom<string>({
+  key: 'userIdSelected',
+  default: ''
 })
-// const [selectedUser, setSelectedUser] = useRecoilState(selectedUserAtom)
-// const setSelectedUser = useSetRecoilState(selectedUserAtom)
-// const selectedUser = useRecoilValue(selectedUserAtom)
-// const resetSelectedUser = useResetRecoilState(selectedUserAtom)
+// const [userIdSelected, setUserIdSelected] = useRecoilState(userIdSelectedAtom)
+// const setUserIdSelected = useSetRecoilState(userIdSelectedAtom)
+// const userIdSelected = useRecoilValue(userIdSelectedAtom)
+// const resetUserIdSelected = useResetRecoilState(userIdSelectedAtom)
