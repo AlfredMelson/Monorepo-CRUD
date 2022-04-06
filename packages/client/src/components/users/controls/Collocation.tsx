@@ -12,7 +12,7 @@ export default function Collocation() {
   const filteredUserState = useRecoilValue(filteredUserStateSelector)
 
   const [focused, setFocused] = useState<number | null>(null)
-  const [selected, setSelected] = useState<number>(1)
+  const [selected, setSelected] = useState<number>(0)
 
   const sortData: ISortData[] = [
     { index: 0, value: 'alphabetical', label: 'Sort alphabetical', icon: <ABCIcon /> },
