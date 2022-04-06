@@ -51,7 +51,7 @@ export default function Collocation() {
                     transition={{
                       layout: {
                         duration: 0.2,
-                        ease: 'easeOut'
+                        ease: [0.6, 0.66, 0.04, 1]
                       }
                     }}
                     className='absolute -left-3 right-0 top-0 z-0 h-9 w-full rounded bg-grey-700'

@@ -38,7 +38,7 @@ export default function DeleteUserDialog() {
                 </div>
               </div>
             </div>
-            <div className='fixed inset-0 z-40 bg-black opacity-40'></div>
+            <div className='fixed inset-0 z-40 bg-black-100/40'></div>
           </>
         )}
       </motion.div>

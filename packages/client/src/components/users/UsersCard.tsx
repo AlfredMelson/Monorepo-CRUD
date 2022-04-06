@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'framer-motion'
 import { useEffect } from 'react'
 import { useSetRecoilState } from 'recoil'
 import { userStateAtom } from '../../recoil-state'
@@ -21,7 +22,9 @@ const UsersCard = () => {
     <>
       <HeaderSection />
       <TaglineSection />
-      <User />
+      <AnimatePresence>
+        <User />
+      </AnimatePresence>
       <PanelControls />
     </>
   )

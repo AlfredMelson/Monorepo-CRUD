@@ -24,7 +24,19 @@ export default function SearchSelectors() {
     <div className='row-start-1'>
       <div className='grid h-10 grid-cols-[_120px_auto] content-center justify-items-center pt-1'>
         <div className='col-span-1 col-start-1 row-start-1 content-center'>
-          <h6 className='text-md text-left font-medium text-gold-50'>User Filter:</h6>
+          <motion.h6
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: { delay: 0.3, duration: 0.5, ease: [0.6, 0.66, 0.04, 1] }
+            }}
+            exit={{
+              opacity: 0,
+              transition: { delay: 0.3, duration: 0.5, ease: [0.6, 0.66, 0.04, 1] }
+            }}
+            className='text-md text-left font-medium text-gold-50'>
+            User Filter:
+          </motion.h6>
         </div>
         <div className='col-span-1 col-start-2 row-start-1'>
           <LayoutGroup>
@@ -32,7 +44,16 @@ export default function SearchSelectors() {
               onMouseLeave={() => setFocused(null)}
               className='grid grid-cols-[_100px_100px_100px_100px] '>
               {searchOptions.map((option) => (
-                <li
+                <motion.li
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: 1,
+                    transition: { delay: 0.3, duration: 0.5, ease: [0.6, 0.66, 0.04, 1] }
+                  }}
+                  exit={{
+                    opacity: 0,
+                    transition: { delay: 0.3, duration: 0.5, ease: [0.6, 0.66, 0.04, 1] }
+                  }}
                   key={option.index}
                   onKeyDown={(event: { key: string }) =>
                     event.key === 'Enter' && setSelected(option.index)
@@ -54,14 +75,14 @@ export default function SearchSelectors() {
                       transition={{
                         layout: {
                           duration: 0.2,
-                          ease: 'easeOut'
+                          ease: [0.6, 0.66, 0.04, 1]
                         }
                       }}
                       className='absolute bottom-0 z-0 h-10 w-full rounded bg-grey-600'
                       layoutId='highlight'
                     />
                   )}
-                </li>
+                </motion.li>
               ))}
             </div>
           </LayoutGroup>
