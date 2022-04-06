@@ -37,9 +37,7 @@ export default function Collocation() {
                 onMouseEnter={() => setFocused(option.index)}
                 onClick={() => {
                   setSelected(option.index)
-                  setAlphabeticalSort(
-                    alphabeticalSort === 'alphabetical' ? 'reverse' : 'alphabetical'
-                  )
+                  setAlphabeticalSort(option.value)
                 }}
                 aria-label='Close Search Area'
                 className='text-md relative cursor-pointer list-none font-medium'>
