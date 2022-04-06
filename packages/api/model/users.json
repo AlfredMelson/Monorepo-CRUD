@@ -268,5 +268,32 @@
     "street": "332 Frozen gatve",
     "city": "Utena",
     "country": "LT"
+  },
+  {
+    "userId": "5463b005-41df-4572-84ea-26ac2be04940",
+    "firstname": "Barbara",
+    "lastname": "Bush",
+    "email": "barbara.bush@whitehouse.gov",
+    "street": "1 Boone Docks",
+    "city": "Badlands",
+    "country": "AD"
+  },
+  {
+    "userId": "85b40f2c-5caa-4471-8aaa-370eab773671",
+    "firstname": "George",
+    "lastname": "Bush",
+    "email": "george.bush@whitehouse.gov",
+    "street": "1 Boone Docks",
+    "city": "Badlands",
+    "country": "AD"
+  },
+  {
+    "userId": "6c05af99-1199-45f8-be7d-ad4dda6c000c",
+    "firstname": "Margret",
+    "lastname": "McCabe",
+    "email": "margret@helpus.com",
+    "street": "123 Church Street",
+    "city": "Selbyville",
+    "country": "BZ"
   }
 ]
