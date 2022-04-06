@@ -872,6 +872,18 @@ input:-webkit-autofill,
   bottom: 0.25rem;
 }
 
+.bottom-2 {
+  bottom: 0.5rem;
+}
+
+.-left-2 {
+  left: -0.5rem;
+}
+
+.-left-3 {
+  left: -0.75rem;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -968,6 +980,16 @@ input:-webkit-autofill,
 .my-auto {
   margin-top: auto;
   margin-bottom: auto;
+}
+
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.my-0 {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .mt-14 {
@@ -1132,6 +1154,14 @@ input:-webkit-autofill,
 
 .h-36 {
   height: 9rem;
+}
+
+.h-12 {
+  height: 3rem;
+}
+
+.h-14 {
+  height: 3.5rem;
 }
 
 .max-h-80 {
@@ -1307,6 +1337,22 @@ input:-webkit-autofill,
 
 .grid-cols-\[_120px_auto\] {
   grid-template-columns: 120px auto;
+}
+
+.grid-cols-\[_100px_100px\] {
+  grid-template-columns: 100px 100px;
+}
+
+.grid-cols-\[_60px_60px\] {
+  grid-template-columns: 60px 60px;
+}
+
+.grid-cols-\[_200px_auto\] {
+  grid-template-columns: 200px auto;
+}
+
+.grid-cols-\[_240px_auto\] {
+  grid-template-columns: 240px auto;
 }
 
 .grid-rows-1 {
@@ -1537,6 +1583,11 @@ input:-webkit-autofill,
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-grey-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(72 79 88 / var(--tw-bg-opacity));
+}
+
 .bg-\[url\(\"\/assets\/bg-user-pattern\.png\"\)\] {
   background-image: url("/assets/bg-user-pattern.png");
 }
@@ -1590,6 +1641,11 @@ input:-webkit-autofill,
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 .pt-2 {
@@ -1658,6 +1714,14 @@ input:-webkit-autofill,
 
 .pb-3 {
   padding-bottom: 0.75rem;
+}
+
+.pt-1 {
+  padding-top: 0.25rem;
+}
+
+.pt-1\.5 {
+  padding-top: 0.375rem;
 }
 
 .text-left {

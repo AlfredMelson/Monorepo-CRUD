@@ -22,15 +22,15 @@ export default function SearchSelectors() {
 
   return (
     <div className='row-start-1'>
-      <div className='mt-1 grid h-8 grid-cols-[_120px_auto] justify-items-start'>
+      <div className='grid h-10 grid-cols-[_120px_auto] content-center justify-items-center'>
         <div className='col-span-1 col-start-1 row-start-1 content-center'>
-          <h6 className='ml-4 mt-1 text-left text-sm font-bold text-white-100'>User Filter:</h6>
+          <h6 className='text-md text-left font-medium text-white-100'>User Filter:</h6>
         </div>
-        <div className='col-span-1 col-start-2 row-start-1 justify-items-center'>
+        <div className='col-span-1 col-start-2 row-start-1'>
           <LayoutGroup>
             <div
               onMouseLeave={() => setFocused(null)}
-              className='grid grid-cols-[_100px_100px_100px_100px]'>
+              className='grid grid-cols-[_100px_100px_100px_100px] '>
               {searchOptions.map((option) => (
                 <li
                   key={option.index}
@@ -43,9 +43,9 @@ export default function SearchSelectors() {
                     setSelected(option.index)
                   }}
                   aria-label='Close Search Area'
-                  className='text-md relative cursor-pointer list-none py-4 font-medium'>
+                  className='text-md text relative cursor-pointer list-none py-4 font-semibold'>
                   <span
-                    className='absolute left-0 right-0 top-0 z-10'
+                    className='absolute left-0 right-0 top-0 z-10 '
                     style={{ color: selected === option.index ? ' #fff' : '#1f6feb' }}>
                     {option.label}
                   </span>
