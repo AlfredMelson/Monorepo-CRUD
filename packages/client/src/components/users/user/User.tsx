@@ -20,7 +20,7 @@ const User = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, delay: index * 0.1 }}
-            className='user-list-group grid grid-cols-[50px_200px_200px_30px_30px] place-content-between gap-2 py-4 '>
+            className='user-list-group grid grid-cols-[50px_200px_200px_30px_30px] place-content-between gap-2 py-4'>
             <div className='col-span-1 ml-4 grid h-10 w-10 grid-cols-1 place-items-center self-center rounded bg-gold-50'>
               <p className='lg font-bold uppercase text-black-100'>
                 {user.firstname.substring(0, 1)}
