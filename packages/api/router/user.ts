@@ -44,7 +44,7 @@ export const userRouter = trpc
       // write the new user to the database
       fsPromises.writeFile(
         // navigate from the current directory into the model directory
-        path.join(__dirname, 'model', 'users.json'),
+        path.join(__dirname, '..', 'model', 'users.json'),
         // specify the data to be written
         JSON.stringify(userDB.allUsers)
       )
@@ -122,7 +122,7 @@ export const userRouter = trpc
         // write the new user to the database
         await fsPromises.writeFile(
           // navigate from the current directory up and into the model directory, to useroyees.json
-          path.join(__dirname, 'model', 'users.json'),
+          path.join(__dirname, '..', 'model', 'users.json'),
           // specify the data to be written
           JSON.stringify(userDB.allUsers)
         )

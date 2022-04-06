@@ -126,9 +126,6 @@ export default function AddUserContent() {
         }
       )
 
-      // Return JSON
-      // console.log(onAdd)
-
       // update user list
       // notify user has been added
       // close dialog if positive response from server

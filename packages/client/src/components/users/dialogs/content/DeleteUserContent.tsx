@@ -9,8 +9,6 @@ import { DeleteUser } from '../submissions'
 export default function DeleteUserContent() {
   const userIdSelected = useRecoilValue(userIdSelectedAtom)
 
-  console.log('userIdSelected', userIdSelected)
-
   const client = new QueryClient()
 
   const deleteUser = trpc.useMutation('user.delete')
