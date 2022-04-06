@@ -868,6 +868,10 @@ input:-webkit-autofill,
   bottom: 0px;
 }
 
+.bottom-1 {
+  bottom: 0.25rem;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -961,6 +965,11 @@ input:-webkit-autofill,
   margin-bottom: 0.25rem;
 }
 
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .mt-14 {
   margin-top: 3.5rem;
 }
@@ -1051,6 +1060,10 @@ input:-webkit-autofill,
 
 .ml-1 {
   margin-left: 0.25rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
 }
 
 .inline {

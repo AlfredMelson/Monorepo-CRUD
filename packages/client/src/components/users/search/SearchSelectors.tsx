@@ -22,9 +22,9 @@ export default function SearchSelectors() {
 
   return (
     <div className='row-start-1'>
-      <div className='my-1 grid h-8 grid-cols-[_120px_auto] justify-items-start'>
-        <div className='col-span-1 col-start-1 row-start-1 ml-4 place-self-start'>
-          <h6 className='text-md text-left text-grey-100'>User Filter:</h6>
+      <div className='mt-1 grid h-8 grid-cols-[_120px_auto] justify-items-start'>
+        <div className='col-span-1 col-start-1 row-start-1 content-center'>
+          <h6 className='ml-4 mt-1 text-left text-sm font-bold text-white-100'>User Filter:</h6>
         </div>
         <div className='col-span-1 col-start-2 row-start-1 justify-items-center'>
           <LayoutGroup>
