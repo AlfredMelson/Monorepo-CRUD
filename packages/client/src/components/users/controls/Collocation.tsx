@@ -39,7 +39,7 @@ export default function Collocation() {
                   setSelected(option.index)
                   setAlphabeticalSort(option.value)
                 }}
-                aria-label='Close Search Area'
+                aria-label='Alphabetical Sort'
                 className='text-md relative cursor-pointer list-none font-medium'>
                 <span
                   className='absolute left-0 right-0 top-0 z-10'

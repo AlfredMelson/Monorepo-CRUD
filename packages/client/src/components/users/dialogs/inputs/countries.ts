@@ -1,9 +1,9 @@
-export interface IAvailableCountries {
+export interface IAllCountries {
   value: string
   title: string
 }
 
-export const AvailableCountries: IAvailableCountries[] = [
+export const allCountries: IAllCountries[] = [
   {
     title: 'Afghanistan',
     value: 'AF'

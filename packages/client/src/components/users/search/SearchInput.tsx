@@ -34,11 +34,11 @@ export default function SearchInput() {
           onChange={handleChange}
         />
       </div>
-      <div className='col-span-1 col-start-2 place-self-center '>
+      <div className='col-span-1 col-start-2 place-self-center'>
         <button
           onClick={handleSearchClose}
           aria-label='Close Search Area'
-          className='ml-1 text-blue-500 transition duration-300  ease-in-out hover:text-blue-400 focus:text-blue-400 focus:outline-none active:text-blue-400'>
+          className='text-blue-500 transition duration-300 ease-in-out hover:text-blue-400 focus:text-blue-400 focus:outline-none active:text-blue-400'>
           <CloseIcon />
         </button>
       </div>

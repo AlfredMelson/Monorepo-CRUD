@@ -3,7 +3,7 @@ import { createRef, SetStateAction, useEffect, useState } from 'react'
 import { QueryClient } from 'react-query'
 import { inputFieldTitle } from '../../../../style'
 import { REGEX_Username, regexEmailValidation, trpc } from '../../../../utils'
-import { AvailableCountries, IAvailableCountries } from '../inputs/countries'
+import { allCountries, IAllCountries } from '../inputs/countries'
 import { CountrySelector } from '../inputs/CountrySelector'
 import AddUser from '../submissions/AddUser'
 
@@ -239,7 +239,7 @@ export default function AddUserContent() {
               onToggle={() => setIsOpen(!isOpen)}
               onChange={(val) => setCountry(val)}
               selectedValue={
-                AvailableCountries.find((option) => option.value === country) as IAvailableCountries
+                allCountries.find((option) => option.value === country) as IAllCountries
               }
             />
           </div>

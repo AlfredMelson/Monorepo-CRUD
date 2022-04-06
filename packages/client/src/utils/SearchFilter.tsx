@@ -1,3 +1,5 @@
+/* eslint-disable no-case-declarations */
+import { allCountries } from '../components/users/dialogs/inputs/countries'
 import { IUser } from '../types/User'
 
 interface ISearchFilter {
@@ -18,7 +20,10 @@ export default function SearchFilter(searchParams: ISearchFilter) {
       case 3:
         return user.city.toLowerCase().includes(searchTerm.toLowerCase())
       case 4:
-        return user.country.toLowerCase().includes(searchTerm.toLowerCase())
+        const unabridgedCountries = allCountries.find(
+          (option) => option.value === user.country
+        )?.title
+        return unabridgedCountries?.toLowerCase().includes(searchTerm.toLowerCase())
     }
   })
 
