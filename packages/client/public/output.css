@@ -1857,6 +1857,11 @@ input:-webkit-autofill,
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
+.text-grey-300 {
+  --tw-text-opacity: 1;
+  color: rgb(139 148 158 / var(--tw-text-opacity));
+}
+
 .opacity-40 {
   opacity: 0.4;
 }

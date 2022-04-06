@@ -1,13 +1,13 @@
 import { LayoutGroup, motion } from 'framer-motion'
 import { useState } from 'react'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { alphabeticalSortAtom, filteredUserStateSelector } from '../../../recoil-state'
 import { usersCardFooter } from '../../../style'
 import { ISortData } from '../../../types/User'
 import { ABCIcon, CBAIcon } from '../../icons'
 
 export default function Collocation() {
-  const [alphabeticalSort, setAlphabeticalSort] = useRecoilState(alphabeticalSortAtom)
+  const setAlphabeticalSort = useSetRecoilState(alphabeticalSortAtom)
 
   const filteredUserState = useRecoilValue(filteredUserStateSelector)
 
@@ -66,43 +66,3 @@ export default function Collocation() {
     </motion.div>
   )
 }
-
-// <LayoutGroup>
-//   <div className='justify-center rounded-lg text-lg' role='group' aria-label='user sorting'>
-//     {sortData.map((sort) => (
-//       <button
-//         onKeyDown={(event: { key: string }) =>
-//           event.key === 'Enter' && setSelected(sort.index)
-//         }
-//         onFocus={() => setFocused(sort.index)}
-//         onMouseEnter={() => setFocused(sort.index)}
-//         onClick={() => {
-// setAlphabeticalSort(
-//   alphabeticalSort === 'alphabetical' ? 'reverse' : 'alphabetical'
-// )
-//           setSelected(sort.index)
-//         }}
-//         key={sort.index}
-//         value={sort.value}
-//         color='green'
-//         type='button'
-//         className='relative px-2 first:mr-3 last:ml-3'>
-//         {focused === sort.index && (
-//           <motion.div
-//             transition={{
-//               layout: {
-//                 duration: 0.2,
-//                 ease: 'easeOut'
-//               }
-//             }}
-//             className='absolute bottom-1 z-0 h-8 w-full rounded bg-grey-600'
-//             layoutId='highlight'
-//           />
-//         )}
-//         <span className='z-10 text-white-50 transition duration-300  ease-in-out hover:text-blue-400'>
-//           {alphabeticalSort === sort.value ? sort.icon : sort.icon}
-//         </span>
-//       </button>
-//     ))}
-//   </div>
-// </LayoutGroup>

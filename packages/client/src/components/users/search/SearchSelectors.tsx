@@ -24,7 +24,7 @@ export default function SearchSelectors() {
     <div className='row-start-1'>
       <div className='grid h-10 grid-cols-[_120px_auto] content-center justify-items-center pt-1'>
         <div className='col-span-1 col-start-1 row-start-1 content-center'>
-          <h6 className='text-md text-left font-medium text-white-100'>User Filter:</h6>
+          <h6 className='text-md text-left font-medium text-gold-50'>User Filter:</h6>
         </div>
         <div className='col-span-1 col-start-2 row-start-1'>
           <LayoutGroup>
@@ -42,7 +42,7 @@ export default function SearchSelectors() {
                   onClick={() => {
                     setSelected(option.index)
                   }}
-                  aria-label='Close Search Area'
+                  aria-label='Select search filter'
                   className='text-md text relative cursor-pointer list-none py-4 font-semibold'>
                   <span
                     className='absolute left-0 right-0 top-0 z-10 '
