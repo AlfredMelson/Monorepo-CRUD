@@ -22,7 +22,7 @@ export default function SearchSelectors() {
 
   return (
     <div className='row-start-1'>
-      <div className='grid h-10 grid-cols-[_120px_auto] content-center justify-items-center'>
+      <div className='grid h-10 grid-cols-[_120px_auto] content-center justify-items-center pt-1'>
         <div className='col-span-1 col-start-1 row-start-1 content-center'>
           <h6 className='text-md text-left font-medium text-white-100'>User Filter:</h6>
         </div>
