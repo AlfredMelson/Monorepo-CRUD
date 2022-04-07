@@ -91,4 +91,3 @@ export default function SearchSelectors() {
     </div>
   )
 }
-

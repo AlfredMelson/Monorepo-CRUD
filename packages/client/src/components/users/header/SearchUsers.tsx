@@ -16,7 +16,7 @@ export default function SearchUsers() {
         {!searchUserDialogState ? (
           <SearchUsersIcon />
         ) : (
-          <span className='text-grey-800 transition duration-300 ease-in-out cursor-default'>
+          <span className='cursor-default text-grey-800 transition duration-300 ease-in-out'>
             <SearchUsersIcon />
           </span>
         )}
@@ -24,4 +24,3 @@ export default function SearchUsers() {
     </div>
   )
 }
-

@@ -12,4 +12,3 @@ export default function Tagline() {
     </motion.h6>
   )
 }
-

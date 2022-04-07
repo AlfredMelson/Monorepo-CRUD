@@ -33,4 +33,3 @@ approot.render(
     </Suspense>
   </ErrorBoundary>
 )
-

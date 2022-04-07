@@ -25,4 +25,3 @@ export const REGEX_City = /^[A-z]{3,30}$/
 /*
  * Country input requirements: from api
  */
-
