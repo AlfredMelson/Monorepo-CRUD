@@ -1,1 +1,1 @@
-export { default as useUserContext } from './useUserContext'
+export { default as useUser } from './useUser'
