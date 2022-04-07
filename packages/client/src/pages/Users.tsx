@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Suspense } from 'react'
 import { UsersCard } from '../components'
-import UserSkeleton from '../components/users/user/UserSkeleton'
+import UserSkeleton from '../components/users/skeleton/UserSkeleton'
 
 const Users = () => {
   return (

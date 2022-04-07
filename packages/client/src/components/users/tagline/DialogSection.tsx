@@ -6,24 +6,21 @@ import {
   EditUserDialogStateAtom,
   SearchUserDialogStateAtom
 } from '../../../recoil-state'
-import { SearchSection } from '../search'
-import Tagline from './Tagline'
+import { AddUserDialog, DeleteUserDialog, EditUserDialog } from '../dialogs'
 
-export default function TaglineSection() {
+export default function DialogSection() {
   const searchUserDialogState = useRecoilValue(SearchUserDialogStateAtom)
   const addUserDialogState = useRecoilValue(AddUserDialogStateAtom)
   const editUserDialogState = useRecoilValue(EditUserDialogStateAtom)
   const deleteUserDialogState = useRecoilValue(DeleteUserDialogStateAtom)
 
   return (
-    <>
-      {!addUserDialogState && !editUserDialogState && !deleteUserDialogState && (
-        <div className='grid h-36 grid-cols-1 grid-rows-1 content-center'>
-          <AnimatePresence>
-            {searchUserDialogState ? <SearchSection /> : <Tagline />}
-          </AnimatePresence>
-        </div>
-      )}
-    </>
+    <div className='grid  grid-cols-1 grid-rows-1 content-center'>
+      <AnimatePresence>
+        {addUserDialogState && <AddUserDialog />}
+        {editUserDialogState && <EditUserDialog />}
+        {deleteUserDialogState && <DeleteUserDialog />}
+      </AnimatePresence>
+    </div>
   )
 }

@@ -1,16 +1,26 @@
 import { AnimatePresence } from 'framer-motion'
 import { Suspense, useEffect, useState } from 'react'
-import { useSetRecoilState } from 'recoil'
-import { userStateAtom } from '../../recoil-state'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
+import {
+  AddUserDialogStateAtom,
+  DeleteUserDialogStateAtom,
+  EditUserDialogStateAtom,
+  userStateAtom
+} from '../../recoil-state'
 import { trpc } from '../../utils'
 import { PanelControls } from './controls'
 import { HeaderSection } from './header'
+import { UserSkeleton } from './skeleton'
 import { TaglineSection } from './tagline'
+import DialogSection from './tagline/DialogSection'
 import { User } from './user'
-import UserSkeleton from './user/UserSkeleton'
 
 const UsersCard = () => {
+  const addUserDialogState = useRecoilValue(AddUserDialogStateAtom)
+  const editUserDialogState = useRecoilValue(EditUserDialogStateAtom)
+  const deleteUserDialogState = useRecoilValue(DeleteUserDialogStateAtom)
   const setUserState = useSetRecoilState(userStateAtom)
+
   const response = trpc.useQuery(['user.getAll'])
   const [isLoading, setIsLoading] = useState(false)
 
@@ -21,7 +31,7 @@ const UsersCard = () => {
     }
     setTimeout(function () {
       setIsLoading(false)
-    }, 2000)
+    }, 1000)
   }, [response.data, setUserState])
 
   console.log('isLoading', isLoading)
@@ -29,9 +39,17 @@ const UsersCard = () => {
   return (
     <Suspense fallback={<UserSkeleton />}>
       <HeaderSection />
-      <TaglineSection />
-      <AnimatePresence>{isLoading ? <UserSkeleton /> : <User />}</AnimatePresence>
-      <PanelControls />
+      <AnimatePresence>
+        {!addUserDialogState && !editUserDialogState && !deleteUserDialogState ? (
+          <>
+            <TaglineSection />
+            {isLoading ? <UserSkeleton /> : <User />}
+            <PanelControls />
+          </>
+        ) : (
+          <DialogSection />
+        )}
+      </AnimatePresence>
     </Suspense>
   )
 }
