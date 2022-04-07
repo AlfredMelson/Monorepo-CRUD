@@ -1,41 +1,12 @@
-import { AnimatePresence } from 'framer-motion'
-import React, { useState } from 'react'
+import React, { Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
-import { QueryClient, QueryClientProvider } from 'react-query'
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
+import { ErrorBoundary } from 'react-error-boundary'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
-import { AppLayout } from './components'
+import AppContent from './AppContent'
+import { ErrorFallback } from './components/layout/ErrorFallback'
+import { Loading } from './components/layout/Loading'
 import { UserProvider } from './context'
-import { Mismatch, Users } from './pages'
-import { trpc } from './utils'
-
-function App() {
-  const location = useLocation()
-  const [queryClient] = useState(() => new QueryClient())
-
-  const [trpcClient] = useState(() =>
-    trpc.createClient({
-      url: 'http://localhost:8080/trpc'
-    })
-  )
-
-  return (
-    <AnimatePresence exitBeforeEnter>
-      <trpc.Provider client={trpcClient} queryClient={queryClient}>
-        <QueryClientProvider client={queryClient}>
-          <Routes key={location.pathname}>
-            <Route path='/' element={<AppLayout />}>
-              {/* public routes */}
-              <Route index element={<Users />} />
-              {/* mismatch route */}
-              <Route path='*' element={<Mismatch />} />
-            </Route>
-          </Routes>
-        </QueryClientProvider>
-      </trpc.Provider>
-    </AnimatePresence>
-  )
-}
 
 // create entry point using unique id from Document
 const rootElement = document.getElementById('root')
@@ -46,16 +17,20 @@ const approot = createRoot(rootElement)
 // initial render
 
 approot.render(
-  <React.StrictMode>
-    <RecoilRoot>
-      <BrowserRouter>
-        <UserProvider>
-          <Routes>
-            <Route path='/*' element={<App />} />
-          </Routes>
-        </UserProvider>
-      </BrowserRouter>
-    </RecoilRoot>
-  </React.StrictMode>
+  <ErrorBoundary FallbackComponent={ErrorFallback}>
+    <Suspense fallback={<Loading />}>
+      <React.StrictMode>
+        <RecoilRoot>
+          <BrowserRouter>
+            <UserProvider>
+              <Routes>
+                <Route path='/*' element={<AppContent />} />
+              </Routes>
+            </UserProvider>
+          </BrowserRouter>
+        </RecoilRoot>
+      </React.StrictMode>
+    </Suspense>
+  </ErrorBoundary>
 )
 
