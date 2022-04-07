@@ -7,8 +7,8 @@
     "start-tailwind": "npx tailwindcss -i ./src/style/input.css -o ./public/output.css --watch",
     "format": "prettier --write \"src/**/*.{js,ts,tsx,css,md,json}\"",
     "lint": "eslint -f unix \"src/**/*.{js,ts,tsx}\"",
-    "type-ck": "tsc --pretty",
-    "full-ck": "yarn format && yarn lint && yarn typecheck"
+    "typecheck": "tsc --pretty",
+    "combined": "yarn format && yarn lint && yarn typecheck"
   },
   "license": "MIT",
   "dependencies": {
