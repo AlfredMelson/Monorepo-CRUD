@@ -1,10 +1,19 @@
 export const usersCardContainer = {
-  hidden: { opacity: 0 },
-  visible: {
+  hidden: { opacity: 0, y: '100%' },
+  animate: {
     opacity: 1,
+    y: 0,
     transition: {
-      delayChildren: 0.3,
-      staggerChildren: 0.6
+      duration: 0.4,
+      ease: [0.6, 0.66, 0.04, 1]
+    }
+  },
+  exit: {
+    opacity: 0,
+    y: '100%',
+    transition: {
+      duration: 0.3,
+      ease: [0.6, 0.66, 0.04, 1]
     }
   }
 }
@@ -34,7 +43,7 @@ export const usersCardList = {
     opacity: 1,
     transition: {
       duration: 0.7,
-      ease: [0.6, -0.05, 0.01, 0.99]
+      ease: [0.6, 0.66, 0.04, 1]
     }
   }
 }
@@ -46,7 +55,7 @@ export const usersCardFooter = {
     transition: {
       delay: 1.4,
       duration: 0.7,
-      ease: [0.6, -0.05, 0.01, 0.99]
+      ease: [0.6, 0.66, 0.04, 1]
     }
   }
 }

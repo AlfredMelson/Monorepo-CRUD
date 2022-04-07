@@ -1,20 +1,33 @@
 import { motion } from 'framer-motion'
-import { useRecoilValue } from 'recoil'
-import { paginatedUserListAtom } from '../../../recoil-state'
+import { useEffect } from 'react'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { paginatedUserListAtom, userStateAtom } from '../../../recoil-state'
 import { IUser } from '../../../types/User'
+import { trpc } from '../../../utils'
 import { allCountries } from '../dialogs/inputs/countries'
 import DeleteUserButton from './DeleteUserButton'
 import EditUserButton from './EditUserButton'
 
 const User = () => {
   const paginatedUserList = useRecoilValue(paginatedUserListAtom)
+  const setUserState = useSetRecoilState(userStateAtom)
+
+  const results = trpc.useQuery(['user.getAll'])
+
+  useEffect(() => {
+    // suspense testing
+    setTimeout(function () {
+      if (results.data) {
+        setUserState(results.data)
+      }
+    }, 1000) //wait 2 seconds
+    // if (results.data) {
+    //   setUserState(results.data)
+    // }
+  }, [results, setUserState])
 
   return (
-    <motion.ul
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className='z-20'>
+    <>
       {paginatedUserList.map((user: IUser, index: number) => (
         <motion.li
           key={index}
@@ -49,7 +62,7 @@ const User = () => {
           </div>
         </motion.li>
       ))}
-    </motion.ul>
+    </>
   )
 }
 export default User

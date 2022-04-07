@@ -9,7 +9,7 @@ export default function TaglineSection() {
 
   return (
     <div className='grid h-36 grid-cols-1 grid-rows-1 content-center'>
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence>
         {searchUserDialogState && <SearchSection />}
         {!searchUserDialogState && <Tagline />}
       </AnimatePresence>
