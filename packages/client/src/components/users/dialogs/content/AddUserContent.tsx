@@ -2,7 +2,13 @@ import { motion } from 'framer-motion'
 import { createRef, SetStateAction, useEffect, useState } from 'react'
 import { QueryClient } from 'react-query'
 import { inputFieldTitle } from '../../../../style'
-import { REGEX_Username, regexEmailValidation, trpc } from '../../../../utils'
+import {
+  REGEX_City,
+  REGEX_Street,
+  REGEX_Username,
+  regexEmailValidation,
+  trpc
+} from '../../../../utils'
 import { allCountries, IAllCountries } from '../inputs/countries'
 import { CountrySelector } from '../inputs/CountrySelector'
 import AddUser from '../submissions/AddUser'
@@ -48,27 +54,31 @@ export default function AddUserContent() {
     const validFirstname: boolean = firstname !== '' && REGEX_Username.test(firstname)
     const validLastname: boolean = lastname !== '' && REGEX_Username.test(lastname)
     const validEmail: boolean = regexEmailValidation.test(email.toLowerCase())
+    const validStreet: boolean = street !== '' && REGEX_Street.test(street)
+    const validCity: boolean = city !== '' && REGEX_City.test(city)
+
     // validate country against api
-    // const validCountry: boolean = emplRole === 'Read' || 'Write' || 'Admin'
-    if (validFirstname && validLastname && validEmail)
+
+    if (validFirstname && validLastname && validEmail && validStreet && validCity) {
       return () => {
         setFormValidation(true)
       }
+    }
   }, [emailValidation, email, firstname, lastname, street, city, country])
 
   // handle setting and updating error message and state
-  useEffect(() => {
-    return () => {
-      // reset alert when either the firstname, lastname or password state changes
-      setFirstnameHelperText('')
-      setLastnameHelperText('')
-      setEmailHelperText('')
-      setStreetHelperText('')
-      setCityHelperText('')
-      setCountryHelperText('')
-      setFormValidation(false)
-    }
-  }, [email])
+  // useEffect(() => {
+  //   return () => {
+  //     // reset alert when either the firstname, lastname or password state changes
+  //     setFirstnameHelperText('')
+  //     setLastnameHelperText('')
+  //     setEmailHelperText('')
+  //     setStreetHelperText('')
+  //     setCityHelperText('')
+  //     setCountryHelperText('')
+  //     setFormValidation(false)
+  //   }
+  // }, [email])
 
   // handle email address input validation
   useEffect(() => {
@@ -88,26 +98,60 @@ export default function AddUserContent() {
   const handleAddUser = async (event: any) => {
     event.preventDefault()
 
-    // alert user if email address input is empty
-    // if (!firstname) {
-    //   return setEmailHelperText('Please enter an email')
-    // }
-    // // alert user if email address input is empty
-    // if (!lastname) {
-    //   return setEmailHelperText('Please enter an email')
-    // }
-    // // alert user if email address input is empty
-    // if (!street) {
-    //   return setEmailHelperText('Please enter an email')
-    // }
-    // // alert user if email address input is empty
-    // if (!city) {
-    //   return setEmailHelperText('Please enter an email')
-    // }
-    // // alert user if email address input is empty
-    // if (!country) {
-    //   return setEmailHelperText('Please enter an email')
-    // }
+    if (!firstname) {
+      // alert user if firstname input is empty
+      return setFirstnameHelperText('Please enter a first name')
+    }
+    const validFirstname: boolean = firstname !== '' && REGEX_Username.test(firstname)
+    if (!validFirstname) {
+      return setFirstnameHelperText('Please enter a valid first name')
+    } else {
+      setFirstnameHelperText('')
+    }
+
+    // alert user if lastname input is empty
+    if (!lastname) {
+      return setLastnameHelperText('Please enter a last name')
+    }
+    const validLastname: boolean = lastname !== '' && REGEX_Username.test(firstname)
+    if (!validLastname) {
+      return setFirstnameHelperText('Please enter a valid last name')
+    } else {
+      setLastnameHelperText('')
+    }
+
+    // alert user if email input is empty
+    if (!email) {
+      return setEmailHelperText('Please enter an email address')
+    }
+    const validEmail: boolean = regexEmailValidation.test(email.toLowerCase())
+    if (!validEmail) {
+      return setEmailHelperText('Please enter a valid email address')
+    } else {
+      setEmailHelperText('')
+    }
+
+    // alert user if street input is empty
+    if (!street) {
+      return setStreetHelperText('Please enter a street address')
+    }
+    const validStreet: boolean = street !== '' && REGEX_Street.test(street)
+    if (!validStreet) {
+      return setStreetHelperText('Please enter a valid street address')
+    } else {
+      setStreetHelperText('')
+    }
+
+    // alert user if city input is empty
+    if (!city) {
+      return setCityHelperText('Please enter a city')
+    }
+    const validCity: boolean = city !== '' && REGEX_City.test(city)
+    if (!validCity) {
+      return setCityHelperText('Please enter a valid city')
+    } else {
+      setCityHelperText('')
+    }
 
     try {
       addUser.mutate(
@@ -157,7 +201,7 @@ export default function AddUserContent() {
                 className='peer relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
               />
               {firstnameHelperText !== '' && (
-                <p className='invisible mt-2 text-sm text-pink-600 peer-invalid:visible'>
+                <p className='mt-1 ml-3 text-left text-sm italic text-red-500'>
                   {firstnameHelperText}
                 </p>
               )}
@@ -177,7 +221,7 @@ export default function AddUserContent() {
                 className='peer relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
               />
               {lastnameHelperText !== '' && (
-                <p className='invisible mt-2 text-sm text-pink-600 peer-invalid:visible'>
+                <p className='mt-1 ml-3 text-left text-sm italic text-red-500'>
                   {lastnameHelperText}
                 </p>
               )}
@@ -194,12 +238,10 @@ export default function AddUserContent() {
                 onChange={(event: { target: { value: SetStateAction<string> } }) => {
                   setEmail(event.target.value)
                 }}
-                className='peer relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
+                className='relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
               />
               {emailHelperText !== '' && (
-                <p className='invisible mt-2 text-sm text-pink-600 peer-invalid:visible'>
-                  {emailHelperText}
-                </p>
+                <p className='mt-1 ml-3 text-left text-sm italic text-red-500'>{emailHelperText}</p>
               )}
             </label>
           </div>
@@ -217,7 +259,7 @@ export default function AddUserContent() {
                 className='relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
               />
               {streetHelperText !== '' && (
-                <p className='invisible mt-2 text-sm text-pink-600 peer-invalid:visible'>
+                <p className='mt-1 ml-3 text-left text-sm italic text-red-500'>
                   {streetHelperText}
                 </p>
               )}
@@ -237,9 +279,7 @@ export default function AddUserContent() {
                 className='relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
               />
               {cityHelperText !== '' && (
-                <p className='invisible mt-2 text-sm text-pink-600 peer-invalid:visible'>
-                  {cityHelperText}
-                </p>
+                <p className='mt-1 ml-3 text-left text-sm italic text-red-500'>{cityHelperText}</p>
               )}
             </label>
           </div>

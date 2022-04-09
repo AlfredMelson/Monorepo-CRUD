@@ -1,7 +1,7 @@
 /*
  * Firstname, Lastname input requirements: must start with a lowercase or uppercase letter followed by 3 to 23 characters that may letters only
  */
-export const REGEX_Username = /^[A-z]{2,25}$/
+export const REGEX_Username = /^[A-z]{2,20}$/
 
 /*
  * Input (email) requirements:

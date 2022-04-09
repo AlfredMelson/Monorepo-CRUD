@@ -165,7 +165,7 @@ export default function EditUserContent() {
                 className='peer relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
               />
               {firstnameHelperText !== '' && (
-                <p className='invisible mt-2 text-sm text-pink-600 peer-invalid:visible'>
+                <p className='mt-1 ml-3 text-left text-sm italic text-red-500'>
                   {firstnameHelperText}
                 </p>
               )}
@@ -185,7 +185,7 @@ export default function EditUserContent() {
                 className='peer relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
               />
               {lastnameHelperText !== '' && (
-                <p className='invisible mt-2 text-sm text-pink-600 peer-invalid:visible'>
+                <p className='mt-1 ml-3 text-left text-sm italic text-red-500'>
                   {lastnameHelperText}
                 </p>
               )}
@@ -205,9 +205,7 @@ export default function EditUserContent() {
                 className='peer relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
               />
               {emailHelperText !== '' && (
-                <p className='invisible mt-2 text-sm text-pink-600 peer-invalid:visible'>
-                  {emailHelperText}
-                </p>
+                <p className='mt-1 ml-3 text-left text-sm italic text-red-500'>{emailHelperText}</p>
               )}
             </label>
           </div>
@@ -225,7 +223,7 @@ export default function EditUserContent() {
                 className='relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
               />
               {streetHelperText !== '' && (
-                <p className='invisible mt-2 text-sm text-pink-600 peer-invalid:visible'>
+                <p className='mt-1 ml-3 text-left text-sm italic text-red-500'>
                   {streetHelperText}
                 </p>
               )}
@@ -245,9 +243,7 @@ export default function EditUserContent() {
                 className='relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
               />
               {cityHelperText !== '' && (
-                <p className='invisible mt-2 text-sm text-pink-600 peer-invalid:visible'>
-                  {cityHelperText}
-                </p>
+                <p className='mt-1 ml-3 text-left text-sm italic text-red-500'>{cityHelperText}</p>
               )}
             </label>
           </div>
