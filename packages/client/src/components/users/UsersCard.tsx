@@ -6,8 +6,7 @@ import { trpc } from '../../utils'
 import { PanelControls } from './controls'
 import { HeaderSection } from './header'
 import { UserSkeleton } from './skeleton'
-import { TaglineSection } from './tagline'
-import DialogSection from './tagline/DialogSection'
+import { DialogReplacement, TaglineSection } from './tagline'
 import { User } from './user'
 
 const UsersCard = () => {
@@ -41,7 +40,7 @@ const UsersCard = () => {
             <PanelControls />
           </>
         ) : (
-          <DialogSection />
+          <DialogReplacement />
         )}
       </AnimatePresence>
     </Suspense>

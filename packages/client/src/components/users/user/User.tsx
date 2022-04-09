@@ -45,7 +45,7 @@ const User = () => {
             </p>
           </div>
           <div className='col-span-1 grid grid-cols-1 place-content-center text-left'>
-            <EditUserButton />
+            <EditUserButton userId={user.userId} />
           </div>
           <div className='col-span-1 mr-2 grid grid-cols-1 place-content-center'>
             <DeleteUserButton userId={user.userId} />

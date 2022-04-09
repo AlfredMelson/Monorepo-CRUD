@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 import { createRef, SetStateAction, useEffect, useState } from 'react'
 import { QueryClient } from 'react-query'
+import { useRecoilValue } from 'recoil'
+import { userIdSelectedAtom, userStateAtom } from '../../../../recoil-state'
 import { inputFieldTitle } from '../../../../style'
 import { REGEX_Username, regexEmailValidation, trpc } from '../../../../utils'
 import { allCountries, IAllCountries } from '../inputs/countries'
@@ -8,8 +10,10 @@ import { CountrySelector } from '../inputs/CountrySelector'
 import { EditUser } from '../submissions'
 
 export default function EditUserContent() {
-  // update email dialog state
-  // const setAddEmplDialogState = useSetRecoilState(AddEmplDialogStateAtom)
+  const userState = useRecoilValue(userStateAtom)
+  const userIdSelected = useRecoilValue(userIdSelectedAtom)
+
+  const userData = userState.filter((user) => user.userId === userIdSelected)
 
   const client = new QueryClient()
 
@@ -17,27 +21,27 @@ export default function EditUserContent() {
   const [userId, setUserId] = useState('')
 
   // firstname input state
-  const [firstname, setFirstname] = useState('')
+  const [firstname, setFirstname] = useState(userData[0].firstname)
   const [firstnameHelperText, setFirstnameHelperText] = useState<string>('')
 
   // lastname input state
-  const [lastname, setLastname] = useState('')
+  const [lastname, setLastname] = useState(userData[0].lastname)
   const [lastnameHelperText, setLastnameHelperText] = useState<string>('')
 
   // email  input state
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = useState(userData[0].email)
   const [emailHelperText, setEmailHelperText] = useState<string>('')
 
   // street input state
-  const [street, setStreet] = useState('')
+  const [street, setStreet] = useState(userData[0].street)
   const [streetHelperText, setStreetHelperText] = useState<string>('')
 
   // city input state
-  const [city, setCity] = useState('')
+  const [city, setCity] = useState(userData[0].city)
   const [cityHelperText, setCityHelperText] = useState<string>('')
 
   // country input state
-  const [country, setCountry] = useState('LT')
+  const [country, setCountry] = useState(userData[0].country)
   const [countryHelperText, setCountryHelperText] = useState<string>('')
 
   // email address validation state
@@ -145,108 +149,125 @@ export default function EditUserContent() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className='relative flex-auto p-6 opacity-100'>
+    <div className='relative p-6 opacity-100'>
       <motion.div variants={inputFieldTitle}>
         <div className='mx-1 grid grid-cols-2 gap-x-5 gap-y-4'>
-          <motion.div variants={inputFieldTitle} className='col-span-1 col-start-1 row-start-1'>
-            <p className='mt-2 -mb-2 ml-3'>First name</p>
-          </motion.div>
-          <div className='col-span-1 col-start-1 row-start-2  w-52'>
-            <input
-              autoFocus
-              id='firstname'
-              placeholder='First name'
-              value={firstname}
-              onChange={(event: { target: { value: SetStateAction<string> } }) => {
-                setFirstname(event.target.value)
-              }}
-              // error={firstnameHelperText !== ''}
-              // helperText={firstnameHelperText}
+          <div className='col-span-1 col-start-1 row-start-1'>
+            <label className='block'>
+              <span className='mt-2 mb-2 ml-3 block text-left'>First name</span>
+              <input
+                id='firstname'
+                placeholder='First name'
+                value={firstname}
+                onChange={(event: { target: { value: SetStateAction<string> } }) => {
+                  setFirstname(event.target.value)
+                }}
+                className='peer relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
+              />
+              {firstnameHelperText !== '' && (
+                <p className='invisible mt-2 text-sm text-pink-600 peer-invalid:visible'>
+                  {firstnameHelperText}
+                </p>
+              )}
+            </label>
+          </div>
 
-              className='relative w-full cursor-default rounded bg-black-100 py-2 pl-3 text-left shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
-            />
+          <div className='col-span-1 col-start-2 row-start-1'>
+            <label className='block'>
+              <span className='mt-2 mb-2 ml-3 block text-left'>Last name</span>
+              <input
+                id='lastname'
+                placeholder='Last name'
+                value={lastname}
+                onChange={(event: { target: { value: SetStateAction<string> } }) => {
+                  setLastname(event.target.value)
+                }}
+                className='peer relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
+              />
+              {lastnameHelperText !== '' && (
+                <p className='invisible mt-2 text-sm text-pink-600 peer-invalid:visible'>
+                  {lastnameHelperText}
+                </p>
+              )}
+            </label>
           </div>
-          <motion.div variants={inputFieldTitle} className='col-span-1 col-start-2 row-start-1'>
-            <p className='mt-2 -mb-2 ml-2'>Last name</p>
-          </motion.div>
-          <div className='col-span-1 col-start-2 row-start-2 w-52'>
-            <input
-              id='lastname'
-              placeholder='Last name'
-              value={lastname}
-              onChange={(event: { target: { value: SetStateAction<string> } }) => {
-                setLastname(event.target.value)
-              }}
-              // error={lastnameHelperText !== ''}
-              // helperText={lastnameHelperText}
-              className='relative w-full cursor-default rounded bg-black-100 py-2 pl-3 text-left shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
-            />
-          </div>
-          <motion.div variants={inputFieldTitle} className='col-span-1 col-start-1 row-start-3'>
-            <p className='mt-2 -mb-2 ml-2'>Email Address</p>
-          </motion.div>
-          <div className='col-span-2 col-start-1 row-start-4 w-80'>
-            <input
-              id='email'
-              placeholder='Email Address'
-              value={email}
-              onChange={(event: { target: { value: SetStateAction<string> } }) => {
-                setEmail(event.target.value)
-              }}
-              // error={emailHelperText !== ''}
-              // helperText={emailHelperText}
 
-              className='relative w-full cursor-default rounded bg-black-100 py-2 pl-3 text-left shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
-            />
+          <div className='col-span-2 col-start-1 row-start-2 w-80'>
+            <label className='block'>
+              <span className='mt-2 mb-2 ml-3 block text-left'>Email</span>
+              <input
+                id='email'
+                placeholder='Email Address'
+                value={email}
+                onChange={(event: { target: { value: SetStateAction<string> } }) => {
+                  setEmail(event.target.value)
+                }}
+                className='peer relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
+              />
+              {emailHelperText !== '' && (
+                <p className='invisible mt-2 text-sm text-pink-600 peer-invalid:visible'>
+                  {emailHelperText}
+                </p>
+              )}
+            </label>
           </div>
-          <motion.div variants={inputFieldTitle} className='col-span-1 col-start-1 row-start-5'>
-            <h6 className='mt-2 -mb-2 ml-2'>Street</h6>
-          </motion.div>
-          <div className='col-span-2 col-start-1 row-start-6 w-80'>
-            <input
-              id='street'
-              placeholder='Street'
-              value={street}
-              onChange={(event: { target: { value: SetStateAction<string> } }) => {
-                setStreet(event.target.value)
-              }}
-              // error={streetHelperText !== ''}
-              // helperText={emailHelperText}
-              className='relative w-full cursor-default rounded bg-black-100 py-2 pl-3 text-left shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
-            />
-          </div>
-          <motion.div variants={inputFieldTitle} className='col-span-1 col-start-1 row-start-7'>
-            <h6 className='mt-2 -mb-2 ml-2'>City</h6>
-          </motion.div>
-          <div className='row-start-8 col-span-1 col-start-1 w-52'>
-            <input
-              id='city'
-              placeholder='City'
-              value={city}
-              onChange={(event: { target: { value: SetStateAction<string> } }) => {
-                setCity(event.target.value)
-              }}
-              // error={cityHelperText !== ''}
-              // helperText={cityHelperText}
-              className='relative w-full cursor-default rounded bg-black-100 py-2 pl-3 text-left shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
-            />
-          </div>
-          <motion.div variants={inputFieldTitle} className='col-span-1 col-start-2 row-start-7'>
-            <h6 className='mt-2 -mb-2 ml-2'>Country</h6>
-          </motion.div>
 
-          <div className='row-start-8 col-span-1 col-start-2 w-52'>
-            <CountrySelector
-              id={'countries'}
-              ref={myRef}
-              open={isOpen}
-              onToggle={() => setIsOpen(!isOpen)}
-              onChange={(val) => setCountry(val)}
-              selectedValue={
-                allCountries.find((option) => option.value === country) as IAllCountries
-              }
-            />
+          <div className='col-span-2 col-start-1 row-start-3 w-80'>
+            <label className='block'>
+              <span className='mt-2 mb-2 ml-3 block text-left'>Street</span>
+              <input
+                id='street'
+                placeholder='Street'
+                value={street}
+                onChange={(event: { target: { value: SetStateAction<string> } }) => {
+                  setStreet(event.target.value)
+                }}
+                className='relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
+              />
+              {streetHelperText !== '' && (
+                <p className='invisible mt-2 text-sm text-pink-600 peer-invalid:visible'>
+                  {streetHelperText}
+                </p>
+              )}
+            </label>
           </div>
+
+          <div className='col-span-1 col-start-1 row-start-4'>
+            <label className='block'>
+              <span className='mt-2 mb-2 ml-3 block text-left'>City</span>
+              <input
+                id='city'
+                placeholder='City'
+                value={city}
+                onChange={(event: { target: { value: SetStateAction<string> } }) => {
+                  setCity(event.target.value)
+                }}
+                className='relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
+              />
+              {cityHelperText !== '' && (
+                <p className='invisible mt-2 text-sm text-pink-600 peer-invalid:visible'>
+                  {cityHelperText}
+                </p>
+              )}
+            </label>
+          </div>
+
+          <div className='col-span-1 col-start-2 row-start-4'>
+            <label className='block'>
+              <span className='mt-2 mb-2 ml-3 block text-left'>Country</span>
+              <CountrySelector
+                id={'countries'}
+                ref={myRef}
+                open={isOpen}
+                onToggle={() => setIsOpen(!isOpen)}
+                onChange={(val) => setCountry(val)}
+                selectedValue={
+                  allCountries.find((option) => option.value === country) as IAllCountries
+                }
+              />
+            </label>
+          </div>
+
           <div className='row-start-11 col-start-2 text-center'>
             <EditUser
               verified={formValidation}
