@@ -3,7 +3,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { useUser } from '../../../../hooks'
 import { DeleteUserDialogStateAtom, userIdSelectedAtom } from '../../../../recoil-state'
 import { trpc } from '../../../../utils'
-import { DeleteUser } from '../submissions'
+import { SubmitButton } from '../submission'
 
 export default function DeleteUserContent() {
   const [checked, setChecked] = useState<boolean>(false)
@@ -50,7 +50,7 @@ export default function DeleteUserContent() {
 
       {checked && (
         <div className='col-span-1 col-start-2 row-start-1'>
-          <DeleteUser
+          <SubmitButton
             onClick={onDelete}
             submitting={loading}
             successful={success}

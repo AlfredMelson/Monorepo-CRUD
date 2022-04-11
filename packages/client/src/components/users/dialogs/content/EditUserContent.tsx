@@ -1,19 +1,33 @@
 import { createRef, SetStateAction, useEffect, useState } from 'react'
-import { QueryClient } from 'react-query'
-import { useRecoilValue } from 'recoil'
-import { userIdSelectedAtom, userStateAtom } from '../../../../recoil-state'
-import { REGEX_Username, regexEmailValidation, trpc } from '../../../../utils'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { useUser } from '../../../../hooks'
+import {
+  EditUserDialogStateAtom,
+  userIdSelectedAtom,
+  userStateAtom
+} from '../../../../recoil-state'
+import {
+  REGEX_City,
+  REGEX_Street,
+  REGEX_Username,
+  regexEmailValidation,
+  trpc
+} from '../../../../utils'
 import { allCountries, IAllCountries } from '../inputs/countries'
 import { CountrySelector } from '../inputs/CountrySelector'
-import { EditUser } from '../submissions'
+import { SubmitButton } from '../submission'
 
 export default function EditUserContent() {
+  const { userUpdate } = useUser()
+
+  const [loading, setLoading] = useState<boolean>(false)
+  const [success, setSuccess] = useState<boolean>(false)
+  const setEditUserDialogState = useSetRecoilState(EditUserDialogStateAtom)
+
   const userState = useRecoilValue(userStateAtom)
   const userIdSelected = useRecoilValue(userIdSelectedAtom)
 
   const userData = userState.filter((user) => user.userId === userIdSelected)
-
-  const client = new QueryClient()
 
   // userId input state
   const [userId, setUserId] = useState('')
@@ -90,29 +104,74 @@ export default function EditUserContent() {
   // }
   const editUser = trpc.useMutation('user.edit')
 
-  const handleAddUser = async (event: any) => {
+  const handleEditUser = async (event: any) => {
     event.preventDefault()
+    setLoading(true)
 
-    // alert user if email address input is empty
-    // if (!firstname) {
-    //   return setEmailHelperText('Please enter an email')
-    // }
-    // // alert user if email address input is empty
-    // if (!lastname) {
-    //   return setEmailHelperText('Please enter an email')
-    // }
-    // // alert user if email address input is empty
-    // if (!street) {
-    //   return setEmailHelperText('Please enter an email')
-    // }
-    // // alert user if email address input is empty
-    // if (!city) {
-    //   return setEmailHelperText('Please enter an email')
-    // }
-    // // alert user if email address input is empty
-    // if (!country) {
-    //   return setEmailHelperText('Please enter an email')
-    // }
+    if (!firstname) {
+      // alert user if firstname input is empty
+      return setFirstnameHelperText('Please enter a first name')
+    }
+    const validFirstname: boolean = firstname !== '' && REGEX_Username.test(firstname)
+    if (!validFirstname) {
+      return setFirstnameHelperText('Please enter a valid first name')
+    } else {
+      setFirstnameHelperText('')
+    }
+
+    // alert user if lastname input is empty
+    if (!lastname) {
+      return setLastnameHelperText('Please enter a last name')
+    }
+    const validLastname: boolean = lastname !== '' && REGEX_Username.test(firstname)
+    if (!validLastname) {
+      return setFirstnameHelperText('Please enter a valid last name')
+    } else {
+      setLastnameHelperText('')
+    }
+
+    // alert user if email input is empty
+    if (!email) {
+      return setEmailHelperText('Please enter an email address')
+    }
+    const validEmail: boolean = regexEmailValidation.test(email.toLowerCase())
+    if (!validEmail) {
+      return setEmailHelperText('Please enter a valid email address')
+    } else {
+      setEmailHelperText('')
+    }
+
+    // alert user if street input is empty
+    if (!street) {
+      return setStreetHelperText('Please enter a street address')
+    }
+    const validStreet: boolean = street !== '' && REGEX_Street.test(street)
+    if (!validStreet) {
+      return setStreetHelperText('Please enter a valid street address')
+    } else {
+      setStreetHelperText('')
+    }
+
+    // alert user if city input is empty
+    if (!city) {
+      return setCityHelperText('Please enter a city')
+    }
+    const validCity: boolean = city !== '' && REGEX_City.test(city)
+    if (!validCity) {
+      return setCityHelperText('Please enter a valid city')
+    } else {
+      setCityHelperText('')
+    }
+
+    const updatedUser = {
+      userId,
+      firstname,
+      lastname,
+      email,
+      street,
+      city,
+      country
+    }
 
     try {
       editUser.mutate(
@@ -127,7 +186,9 @@ export default function EditUserContent() {
         },
         {
           onSuccess: () => {
-            client.invalidateQueries(['user.getAll'])
+            setSuccess(true)
+            setLoading(false)
+            userUpdate(updatedUser)
           }
         }
       )
@@ -136,9 +197,14 @@ export default function EditUserContent() {
       // notify user has been added
       // close dialog if positive response from server
 
+      setTimeout(function () {
+        setEditUserDialogState(false)
+      }, 1000)
       // open error alert if there is a caught error
     } catch (error) {
       console.log(error)
+      setSuccess(false)
+      setLoading(false)
     }
   }
 
@@ -253,13 +319,11 @@ export default function EditUserContent() {
       </div>
 
       <div className='row-start-11 col-start-2 text-center'>
-        <EditUser
-          verified={formValidation}
-          onClick={handleAddUser}
+        <SubmitButton
           btnText='Update User'
-          disabled={editUser.isLoading}
-          // submitting={submitting}
-          // successSubmit={successSubmit}
+          submitting={loading}
+          successful={success}
+          onClick={handleEditUser}
         />
         {editUser.error && <p>Something went wrong! {editUser.error.message}</p>}
       </div>

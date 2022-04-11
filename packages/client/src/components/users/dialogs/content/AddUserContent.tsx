@@ -1,6 +1,5 @@
 import { createRef, SetStateAction, useEffect, useState } from 'react'
 import { useSetRecoilState } from 'recoil'
-// import { QueryClient } from 'react-query'
 import { v4 as uuidv4 } from 'uuid'
 import { useUser } from '../../../../hooks'
 import { AddUserDialogStateAtom } from '../../../../recoil-state'
@@ -13,7 +12,7 @@ import {
 } from '../../../../utils'
 import { allCountries, IAllCountries } from '../inputs/countries'
 import { CountrySelector } from '../inputs/CountrySelector'
-import AddUser from '../submissions/AddUser'
+import { SubmitButton } from '../submission'
 
 export default function AddUserContent() {
   const { userAddition } = useUser()
@@ -304,7 +303,7 @@ export default function AddUserContent() {
         </label>
       </div>
       <div className='row-start-11 col-start-2 text-center'>
-        <AddUser
+        <SubmitButton
           submitting={loading}
           successful={success}
           onClick={handleAddUser}
