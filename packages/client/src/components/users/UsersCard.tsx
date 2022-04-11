@@ -16,14 +16,13 @@ import { DialogReplacement, TaglineSection } from './tagline'
 import { User } from './user'
 
 const UsersCard = () => {
-  const addUserDialogState = useRecoilValue(AddUserDialogStateAtom)
-  const editUserDialogState = useRecoilValue(EditUserDialogStateAtom)
-
+  // set allUsers initial state
   const { setAllUsers } = useUser()
 
-  const deleteUserDialogState = useRecoilValue(DeleteUserDialogStateAtom)
-
+  // query users from server database
   const response = trpc.useQuery(['user.getAll'])
+
+  // loading state used in simulating data loading
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
@@ -31,11 +30,17 @@ const UsersCard = () => {
     if (response.data) {
       setAllUsers(response.data)
     }
+    // timeout to simulate loading
     setTimeout(function () {
       setIsLoading(false)
     }, 1000)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  // ui updates based on state of dialogs
+  const addUserDialogState = useRecoilValue(AddUserDialogStateAtom)
+  const editUserDialogState = useRecoilValue(EditUserDialogStateAtom)
+  const deleteUserDialogState = useRecoilValue(DeleteUserDialogStateAtom)
 
   return (
     <Suspense fallback={<UserSkeleton />}>
@@ -44,8 +49,15 @@ const UsersCard = () => {
         {!addUserDialogState && !editUserDialogState ? (
           <>
             <TaglineSection />
-            {isLoading ? <UserSkeleton /> : <User />}
-            {deleteUserDialogState ? <DeleteUserDialog /> : <PanelControls />}
+            {isLoading ? (
+              <>
+                <UserSkeleton />
+                <div className='my-2 w-full' />
+              </>
+            ) : (
+              <User />
+            )}
+            {!isLoading && (deleteUserDialogState ? <DeleteUserDialog /> : <PanelControls />)}
           </>
         ) : (
           <DialogReplacement />
