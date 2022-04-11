@@ -3,7 +3,7 @@ interface IDeleteUser {
   btnText: string
   disabled?: boolean
   submitting?: boolean
-  successSubmit?: boolean
+  successful?: boolean
 }
 
 export default function DeleteUser({
@@ -11,16 +11,16 @@ export default function DeleteUser({
   btnText,
   disabled,
   submitting,
-  successSubmit
+  successful
 }: IDeleteUser) {
   return (
-    <div className='relative mt-4'>
-      <button
-        className='rounded bg-white py-2 px-4 text-center text-black hover:bg-gray-200'
-        disabled={disabled}
-        onClick={onClick}>
-        {!submitting ? btnText : successSubmit && 'Check Icon'}
-      </button>
-    </div>
+    <button
+      className='rounded bg-transparent py-1 px-4 text-center text-white-50 hover:bg-grey-50 hover:text-black-50'
+      disabled={disabled}
+      onClick={onClick}>
+      {!submitting ? btnText : successful && 'Check Icon'}
+      {submitting && 'Submitting'}
+      {/* {submitting ? btnText : successful && 'Check Icon'} */}
+    </button>
   )
 }

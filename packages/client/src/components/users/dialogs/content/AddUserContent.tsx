@@ -1,7 +1,5 @@
-import { motion } from 'framer-motion'
 import { createRef, SetStateAction, useEffect, useState } from 'react'
 import { QueryClient } from 'react-query'
-import { inputFieldTitle } from '../../../../style'
 import {
   REGEX_City,
   REGEX_Street,
@@ -185,133 +183,121 @@ export default function AddUserContent() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className='relative flex-auto p-6 opacity-100'>
-      <motion.div variants={inputFieldTitle}>
-        <div className='mx-1 grid grid-cols-2 gap-x-5 gap-y-4'>
-          <div className='col-span-1 col-start-1 row-start-1'>
-            <label className='block'>
-              <span className='mt-2 mb-2 ml-3 block text-left'>First name</span>
-              <input
-                id='firstname'
-                placeholder='First name'
-                value={firstname}
-                onChange={(event: { target: { value: SetStateAction<string> } }) => {
-                  setFirstname(event.target.value)
-                }}
-                className='peer relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
-              />
-              {firstnameHelperText !== '' && (
-                <p className='mt-1 ml-3 text-left text-sm italic text-red-500'>
-                  {firstnameHelperText}
-                </p>
-              )}
-            </label>
-          </div>
+    <div className='mx-1 grid grid-cols-2 gap-x-5 gap-y-4 p-6'>
+      <div className='col-span-1 col-start-1 row-start-1'>
+        <label className='block'>
+          <span className='mt-2 mb-2 ml-3 block text-left'>First name</span>
+          <input
+            id='firstname'
+            placeholder='First name'
+            value={firstname}
+            onChange={(event: { target: { value: SetStateAction<string> } }) => {
+              setFirstname(event.target.value)
+            }}
+            className='peer relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
+          />
+          {firstnameHelperText !== '' && (
+            <p className='mt-1 ml-3 text-left text-sm italic text-red-500'>{firstnameHelperText}</p>
+          )}
+        </label>
+      </div>
 
-          <div className='col-span-1 col-start-2 row-start-1'>
-            <label className='block'>
-              <span className='mt-2 mb-2 ml-3 block text-left'>Last name</span>
-              <input
-                id='lastname'
-                placeholder='Last name'
-                value={lastname}
-                onChange={(event: { target: { value: SetStateAction<string> } }) => {
-                  setLastname(event.target.value)
-                }}
-                className='peer relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
-              />
-              {lastnameHelperText !== '' && (
-                <p className='mt-1 ml-3 text-left text-sm italic text-red-500'>
-                  {lastnameHelperText}
-                </p>
-              )}
-            </label>
-          </div>
+      <div className='col-span-1 col-start-2 row-start-1'>
+        <label className='block'>
+          <span className='mt-2 mb-2 ml-3 block text-left'>Last name</span>
+          <input
+            id='lastname'
+            placeholder='Last name'
+            value={lastname}
+            onChange={(event: { target: { value: SetStateAction<string> } }) => {
+              setLastname(event.target.value)
+            }}
+            className='peer relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
+          />
+          {lastnameHelperText !== '' && (
+            <p className='mt-1 ml-3 text-left text-sm italic text-red-500'>{lastnameHelperText}</p>
+          )}
+        </label>
+      </div>
 
-          <div className='col-span-2 col-start-1 row-start-2 w-80'>
-            <label className='block'>
-              <span className='mt-2 mb-2 ml-3 block text-left'>Email</span>
-              <input
-                id='email'
-                placeholder='Email Address'
-                value={email}
-                onChange={(event: { target: { value: SetStateAction<string> } }) => {
-                  setEmail(event.target.value)
-                }}
-                className='relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
-              />
-              {emailHelperText !== '' && (
-                <p className='mt-1 ml-3 text-left text-sm italic text-red-500'>{emailHelperText}</p>
-              )}
-            </label>
-          </div>
+      <div className='col-span-2 col-start-1 row-start-2 w-80'>
+        <label className='block'>
+          <span className='mt-2 mb-2 ml-3 block text-left'>Email</span>
+          <input
+            id='email'
+            placeholder='Email Address'
+            value={email}
+            onChange={(event: { target: { value: SetStateAction<string> } }) => {
+              setEmail(event.target.value)
+            }}
+            className='relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
+          />
+          {emailHelperText !== '' && (
+            <p className='mt-1 ml-3 text-left text-sm italic text-red-500'>{emailHelperText}</p>
+          )}
+        </label>
+      </div>
 
-          <div className='col-span-2 col-start-1 row-start-3 w-80'>
-            <label className='block'>
-              <span className='mt-2 mb-2 ml-3 block text-left'>Street</span>
-              <input
-                id='street'
-                placeholder='Street'
-                value={street}
-                onChange={(event: { target: { value: SetStateAction<string> } }) => {
-                  setStreet(event.target.value)
-                }}
-                className='relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
-              />
-              {streetHelperText !== '' && (
-                <p className='mt-1 ml-3 text-left text-sm italic text-red-500'>
-                  {streetHelperText}
-                </p>
-              )}
-            </label>
-          </div>
+      <div className='col-span-2 col-start-1 row-start-3 w-80'>
+        <label className='block'>
+          <span className='mt-2 mb-2 ml-3 block text-left'>Street</span>
+          <input
+            id='street'
+            placeholder='Street'
+            value={street}
+            onChange={(event: { target: { value: SetStateAction<string> } }) => {
+              setStreet(event.target.value)
+            }}
+            className='relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
+          />
+          {streetHelperText !== '' && (
+            <p className='mt-1 ml-3 text-left text-sm italic text-red-500'>{streetHelperText}</p>
+          )}
+        </label>
+      </div>
 
-          <div className='col-span-1 col-start-1 row-start-4'>
-            <label className='block'>
-              <span className='mt-2 mb-2 ml-3 block text-left'>City</span>
-              <input
-                id='city'
-                placeholder='City'
-                value={city}
-                onChange={(event: { target: { value: SetStateAction<string> } }) => {
-                  setCity(event.target.value)
-                }}
-                className='relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
-              />
-              {cityHelperText !== '' && (
-                <p className='mt-1 ml-3 text-left text-sm italic text-red-500'>{cityHelperText}</p>
-              )}
-            </label>
-          </div>
+      <div className='col-span-1 col-start-1 row-start-4'>
+        <label className='block'>
+          <span className='mt-2 mb-2 ml-3 block text-left'>City</span>
+          <input
+            id='city'
+            placeholder='City'
+            value={city}
+            onChange={(event: { target: { value: SetStateAction<string> } }) => {
+              setCity(event.target.value)
+            }}
+            className='relative w-full cursor-default rounded bg-black-100 py-2 pl-3 shadow-sm focus:border-gold-50 focus:outline-none focus:ring-1 focus:ring-gold-50'
+          />
+          {cityHelperText !== '' && (
+            <p className='mt-1 ml-3 text-left text-sm italic text-red-500'>{cityHelperText}</p>
+          )}
+        </label>
+      </div>
 
-          <div className='col-span-1 col-start-2 row-start-4'>
-            <label className='block'>
-              <span className='mt-2 mb-2 ml-3 block text-left'>Country</span>
-              <CountrySelector
-                id={'countries'}
-                ref={myRef}
-                open={isOpen}
-                onToggle={() => setIsOpen(!isOpen)}
-                onChange={(val) => setCountry(val)}
-                selectedValue={
-                  allCountries.find((option) => option.value === country) as IAllCountries
-                }
-              />
-            </label>
-          </div>
-          <div className='row-start-11 col-start-2 text-center'>
-            <AddUser
-              verified={formValidation}
-              onClick={handleAddUser}
-              btnText='Add User'
-              disabled={addUser.isLoading}
-              // submitting={submitting}
-              // successSubmit={successSubmit}
-            />
-            {addUser.error && <p>Something went wrong! {addUser.error.message}</p>}
-          </div>
-        </div>
-      </motion.div>
+      <div className='col-span-1 col-start-2 row-start-4'>
+        <label className='block'>
+          <span className='mt-2 mb-2 ml-3 block text-left'>Country</span>
+          <CountrySelector
+            id={'countries'}
+            ref={myRef}
+            open={isOpen}
+            onToggle={() => setIsOpen(!isOpen)}
+            onChange={(val) => setCountry(val)}
+            selectedValue={allCountries.find((option) => option.value === country) as IAllCountries}
+          />
+        </label>
+      </div>
+      <div className='row-start-11 col-start-2 text-center'>
+        <AddUser
+          verified={formValidation}
+          onClick={handleAddUser}
+          btnText='Add User'
+          disabled={addUser.isLoading}
+          // submitting={submitting}
+          // successSubmit={successSubmit}
+        />
+        {addUser.error && <p>Something went wrong! {addUser.error.message}</p>}
+      </div>
     </div>
   )
 }

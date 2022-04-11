@@ -57,15 +57,22 @@ export const usersCardFooter = {
       duration: 0.7,
       ease: [0.6, 0.66, 0.04, 1]
     }
+  },
+  exit: {
+    y: -20,
+    opacity: 0,
+    transition: { duration: 0.4, ease: [0.6, 0.66, 0.04, 1] }
   }
 }
 
-export const inputFieldTitle = {
+export const containerOpacityAnimation = {
   initial: { opacity: 0 },
   animate: {
     opacity: 1,
-    transition: {
-      duration: 0.3
-    }
+    transition: { duration: 0.4, ease: [0.6, 0.66, 0.04, 1] }
+  },
+  exit: {
+    opacity: 0,
+    transition: { duration: 0.4, ease: [0.6, 0.66, 0.04, 1] }
   }
 }

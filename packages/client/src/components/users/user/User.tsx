@@ -3,7 +3,6 @@ import { useRecoilValue } from 'recoil'
 import { paginatedUserListAtom } from '../../../recoil-state'
 import { IUser } from '../../../types/User'
 import { allCountries } from '../dialogs/inputs/countries'
-import UserSkeleton from '../skeleton/UserSkeleton'
 import DeleteUserButton from './DeleteUserButton'
 import EditUserButton from './EditUserButton'
 

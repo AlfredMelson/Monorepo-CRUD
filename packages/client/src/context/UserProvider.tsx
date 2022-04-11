@@ -8,12 +8,14 @@ import { trpc } from '../utils'
 
 export interface Users {
   allUsers: IUser[]
+  userDeletion: (userId: string) => void
   isLoading: boolean
   error: string
 }
 
 const UserContext = createContext<Users>({
   allUsers: [],
+  userDeletion: () => {},
   isLoading: false,
   error: ''
 })
@@ -37,6 +39,12 @@ export const UserProvider = ({ children }: IUserProvider) => {
   const userState = useRecoilValue(userStateAtom)
   const [allUsers, setAllUsers] = useState<IUser[]>([])
 
+  //delete user from state with userId
+  const userDeletion = (userId: string) => {
+    const newUsers = allUsers.filter((user) => user.userId !== userId)
+    setAllUsers(newUsers)
+  }
+
   useEffect(() => {
     if (userState) {
       setAllUsers(userState)
@@ -44,7 +52,9 @@ export const UserProvider = ({ children }: IUserProvider) => {
   }, [userState])
 
   return (
-    <UserContext.Provider value={{ allUsers, isLoading, error }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ allUsers, userDeletion, isLoading, error }}>
+      {children}
+    </UserContext.Provider>
   )
 }
 

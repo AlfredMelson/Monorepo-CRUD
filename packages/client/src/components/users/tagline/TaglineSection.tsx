@@ -1,4 +1,3 @@
-import { AnimatePresence } from 'framer-motion'
 import { useRecoilValue } from 'recoil'
 import {
   AddUserDialogStateAtom,
@@ -17,9 +16,7 @@ export default function TaglineSection() {
     <>
       {!addUserDialogState && !editUserDialogState && (
         <div className='grid h-36 grid-cols-1 grid-rows-1 content-center'>
-          <AnimatePresence>
-            {searchUserDialogState ? <SearchSection /> : <Tagline />}
-          </AnimatePresence>
+          {searchUserDialogState ? <SearchSection /> : <Tagline />}
         </div>
       )}
     </>

@@ -1,55 +1,66 @@
-import { motion } from 'framer-motion'
+import { useState } from 'react'
 import { QueryClient } from 'react-query'
-import { useRecoilValue } from 'recoil'
-import { userIdSelectedAtom } from '../../../../recoil-state'
-import { inputFieldTitle } from '../../../../style'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { useUser } from '../../../../hooks'
+import { DeleteUserDialogStateAtom, userIdSelectedAtom } from '../../../../recoil-state'
 import { trpc } from '../../../../utils'
 import { DeleteUser } from '../submissions'
 
 export default function DeleteUserContent() {
+  const [checked, setChecked] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false)
+  const [success, setSuccess] = useState<boolean>(false)
   const userIdSelected = useRecoilValue(userIdSelectedAtom)
-
-  const client = new QueryClient()
+  const setDeleteUserDialogState = useSetRecoilState(DeleteUserDialogStateAtom)
+  // const client = new QueryClient()
+  const { userDeletion } = useUser()
 
   const deleteUser = trpc.useMutation('user.delete')
 
   const onDelete = async () => {
+    setLoading(true)
     try {
       const userId = userIdSelected
-      console.log('userId', userId)
       deleteUser.mutate(
         { userId },
         {
           onSuccess: () => {
-            client.invalidateQueries(['user.getAll'])
+            // client.invalidateQueries(['user.getAll'])
+            setSuccess(true)
+            setLoading(false)
+            userDeletion(userId)
           }
         }
       )
+      setTimeout(function () {
+        setDeleteUserDialogState(false)
+      }, 1000)
     } catch (error) {
       console.log(error)
+      setSuccess(false)
+      setLoading(false)
     }
   }
 
   return (
-    <div className='opacity-100'>
-      <motion.div variants={inputFieldTitle}>
-        <div className='grid grid-cols-4'>
-          <motion.div
-            variants={inputFieldTitle}
-            className='col-span-2 col-start-1 row-start-1 pr-8'>
-            <h6 className='mt-4 mr-0 mb-1 ml-2'>Are you sure?</h6>
-          </motion.div>
+    <div className='mx-1 grid grid-cols-2 gap-x-5 gap-y-4 p-6'>
+      <div className='col-span-1 col-start-1 row-start-1'>
+        <label className='inline-flex items-center'>
+          <input type='checkbox' className='h-6 w-6 rounded' onClick={() => setChecked(!checked)} />
+          <span className='ml-2'>Are you sure? </span>
+        </label>
+      </div>
 
-          <div className='col-start-4 row-start-6'>
-            <DeleteUser
-              onClick={onDelete}
-              btnText='Delete'
-              // submitting={submitting}
-              // successSubmit={successSubmit}
-            />
-          </div>
+      {checked && (
+        <div className='col-span-1 col-start-2 row-start-1'>
+          <DeleteUser
+            onClick={onDelete}
+            submitting={loading}
+            successful={success}
+            btnText='Delete'
+          />
         </div>
-      </motion.div>
+      )}
     </div>
   )
 }

@@ -14,8 +14,8 @@ export default function DeleteUserButton({ userId }: IDeleteUserButton) {
     <div className='w-12 place-self-end'>
       <button
         onClick={() => {
-          setDeleteUserDialogState(true)
           setUserIdSelected(userId)
+          setDeleteUserDialogState(true)
         }}
         aria-label='Delete User'
         className=' text-blue-500 transition duration-300 ease-in-out hover:text-blue-400  focus:text-blue-400 focus:outline-none  active:text-blue-400'>

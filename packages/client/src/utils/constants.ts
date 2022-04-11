@@ -15,7 +15,7 @@ export const regexEmailValidation =
 /*
  * Street input requirements: must start with a lowercase or uppercase letter followed by 3 to 23 characters that may letters, numbers, underscores, or hyphens
  */
-export const REGEX_Street = /^[A-z][A-z0-9-_]{3,25}$/
+export const REGEX_Street = /^\d+\s[A-z]+\s[A-z]{3,25}$/
 
 /*
  * City input requirements: must start with a lowercase or uppercase letter followed by 3 to 23 characters that may letters only
