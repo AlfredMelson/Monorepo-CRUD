@@ -216,15 +216,6 @@
     "country": "LT"
   },
   {
-    "userId": "5b6714ec-2b08-4b80-be0c-de00e8a964ab",
-    "firstname": "Brandy",
-    "lastname": "Wilson",
-    "email": "brandy@help.com",
-    "street": "332 Frozen gatve",
-    "city": "Utena",
-    "country": "LT"
-  },
-  {
     "userId": "85b40f2c-5caa-4471-8aaa-370eab773671",
     "firstname": "George",
     "lastname": "Bush",
@@ -250,5 +241,14 @@
     "street": "223 Freedom Way",
     "city": "Kviv",
     "country": "UA"
+  },
+  {
+    "userId": "5b6714ec-2b08-4b80-be0c-de00e8a964ab",
+    "firstname": "Brandy",
+    "lastname": "Wilson-Smith",
+    "email": "brandy@help.com",
+    "street": "332 Frozen gatve",
+    "city": "Utena",
+    "country": "LT"
   }
 ]

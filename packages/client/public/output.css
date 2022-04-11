@@ -869,13 +869,14 @@ input:-webkit-autofill,
   margin: 1.25rem;
 }
 
-.m-4 {
-  margin: 1rem;
-}
-
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .my-3 {
@@ -886,21 +887,6 @@ input:-webkit-autofill,
 .mx-1 {
   margin-left: 0.25rem;
   margin-right: 0.25rem;
-}
-
-.mx-4 {
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-
-.mx-10 {
-  margin-left: 2.5rem;
-  margin-right: 2.5rem;
-}
-
-.my-2 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
 }
 
 .mt-14 {
@@ -979,10 +965,6 @@ input:-webkit-autofill,
   display: block;
 }
 
-.inline-block {
-  display: inline-block;
-}
-
 .inline {
   display: inline;
 }
@@ -997,10 +979,6 @@ input:-webkit-autofill,
 
 .grid {
   display: grid;
-}
-
-.inline-grid {
-  display: inline-grid;
 }
 
 .hidden {
@@ -1157,10 +1135,6 @@ input:-webkit-autofill,
   list-style-type: none;
 }
 
-.auto-cols-auto {
-  grid-auto-columns: auto;
-}
-
 .auto-rows-auto {
   grid-auto-rows: auto;
 }
@@ -1201,14 +1175,6 @@ input:-webkit-autofill,
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.grid-cols-4 {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.grid-cols-\[_100px_auto\] {
-  grid-template-columns: 100px auto;
-}
-
 .grid-rows-1 {
   grid-template-rows: repeat(1, minmax(0, 1fr));
 }
@@ -1227,10 +1193,6 @@ input:-webkit-autofill,
 
 .place-content-between {
   place-content: space-between;
-}
-
-.place-content-evenly {
-  place-content: space-evenly;
 }
 
 .place-items-center {
@@ -1265,10 +1227,6 @@ input:-webkit-autofill,
   gap: 0.5rem;
 }
 
-.gap-4 {
-  gap: 1rem;
-}
-
 .gap-y-2 {
   row-gap: 0.5rem;
 }
@@ -1280,10 +1238,6 @@ input:-webkit-autofill,
 
 .gap-y-4 {
   row-gap: 1rem;
-}
-
-.gap-y-1 {
-  row-gap: 0.25rem;
 }
 
 .-space-x-px > :not([hidden]) ~ :not([hidden]) {
@@ -1397,10 +1351,6 @@ input:-webkit-autofill,
 
 .p-6 {
   padding: 1.5rem;
-}
-
-.p-4 {
-  padding: 1rem;
 }
 
 .px-4 {
@@ -1517,11 +1467,6 @@ input:-webkit-autofill,
   line-height: 1.5rem;
 }
 
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-
 .font-medium {
   font-weight: 500;
 }
@@ -1530,12 +1475,12 @@ input:-webkit-autofill,
   font-weight: 600;
 }
 
-.font-bold {
-  font-weight: 700;
-}
-
 .font-normal {
   font-weight: 400;
+}
+
+.font-bold {
+  font-weight: 700;
 }
 
 .uppercase {

@@ -1,5 +1,5 @@
 {
-  "name": "@insly/client",
+  "name": "@user/client",
   "version": "1.0.0",
   "scripts": {
     "build": "react-scripts build",
@@ -12,9 +12,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@trpc/client": "^9.21.0",
-    "@trpc/react": "^9.21.0",
-    "@trpc/server": "^9.21.0",
+    "@trpc/client": "^9.22.0",
+    "@trpc/react": "^9.22.0",
+    "@trpc/server": "^9.22.0",
     "framer-motion": "^6.2.9",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -23,7 +23,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
     "recoil": "^0.7.0",
-    "@insly/api": "1.0.0",
+    "@user/api": "1.0.0",
     "uuid": "^8.3.2",
     "zod": "^3.14.4"
   },
@@ -32,7 +32,7 @@
     "@types/eslint": "^8.4.1",
     "@types/eslint-config-prettier": "^6.11.0",
     "@types/node": "^17.0.23",
-    "@types/prettier": "^2.4.4",
+    "@types/prettier": "^2.6.0",
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
     "@types/react-router-dom": "^5.3.3",
@@ -40,7 +40,7 @@
     "@typescript-eslint/parser": "^5.18.0",
     "@types/uuid": "^8.3.4",
     "autoprefixer": "^10.4.4",
-    "eslint": "^8.12.0",
+    "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-react": "^7.29.4",

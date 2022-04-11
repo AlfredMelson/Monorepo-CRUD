@@ -1,4 +1,4 @@
-# insly_monorepo_crud (Insly test assigment)
+# user_monorepo_crud
 
 ### setup
 

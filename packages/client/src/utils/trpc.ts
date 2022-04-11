@@ -1,5 +1,5 @@
-import { AppRouter } from '@insly/api'
 import { createReactQueryHooks } from '@trpc/react'
+import { AppRouter } from '@user/api'
 /*
  * Purpose:
  * createReactQueryHooks helper from trpc to will enable the creation of hooks that are specific to the api/server
