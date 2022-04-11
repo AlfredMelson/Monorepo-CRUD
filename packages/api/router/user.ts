@@ -27,6 +27,7 @@ export const userRouter = trpc
   // create user
   .mutation('add', {
     input: z.object({
+      userId: z.string(),
       firstname: z.string(),
       lastname: z.string(),
       email: z.string(),
@@ -35,12 +36,7 @@ export const userRouter = trpc
       country: z.string()
     }),
     async resolve({ input }: Record<string, any>) {
-      const userId: string = uuidv4()
-      const newUser = {
-        userId,
-        ...input
-      }
-      userDB.setAllUsers([...userDB.allUsers, newUser])
+      userDB.setAllUsers([...userDB.allUsers, input])
       // write the new user to the database
       fsPromises.writeFile(
         // navigate from the current directory into the model directory
@@ -48,7 +44,7 @@ export const userRouter = trpc
         // specify the data to be written
         JSON.stringify(userDB.allUsers)
       )
-      return { user: newUser }
+      return { user: input }
     }
   })
 

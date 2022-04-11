@@ -8,16 +8,16 @@ import { trpc } from '../utils'
 
 export interface Users {
   allUsers: IUser[]
+  userAddition: (newUser: IUser) => void
+  userUpdate: (newUser: IUser) => void
   userDeletion: (userId: string) => void
-  isLoading: boolean
-  error: string
 }
 
 const UserContext = createContext<Users>({
   allUsers: [],
-  userDeletion: () => {},
-  isLoading: false,
-  error: ''
+  userAddition: () => {},
+  userUpdate: () => {},
+  userDeletion: () => {}
 })
 
 export const useUsersContext = () => useContext(UserContext)
@@ -33,17 +33,8 @@ function DbUser() {
 }
 
 export const UserProvider = ({ children }: IUserProvider) => {
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState('')
-
   const userState = useRecoilValue(userStateAtom)
   const [allUsers, setAllUsers] = useState<IUser[]>([])
-
-  //delete user from state with userId
-  const userDeletion = (userId: string) => {
-    const newUsers = allUsers.filter((user) => user.userId !== userId)
-    setAllUsers(newUsers)
-  }
 
   useEffect(() => {
     if (userState) {
@@ -51,8 +42,26 @@ export const UserProvider = ({ children }: IUserProvider) => {
     }
   }, [userState])
 
+  // delete user from state
+  const userDeletion = (userId: string) => {
+    const otherUsers = allUsers.filter((user) => user.userId !== userId)
+    setAllUsers(otherUsers)
+  }
+
+  // add user to state
+  const userAddition = (newUser: IUser) => {
+    setAllUsers([...allUsers, newUser])
+  }
+
+  // edit user from state
+  const userUpdate = (updatedUser: IUser) => {
+    const { userId } = updatedUser
+    const otherUsers = allUsers.filter((user) => user.userId !== userId)
+    setAllUsers([...otherUsers, updatedUser])
+  }
+
   return (
-    <UserContext.Provider value={{ allUsers, userDeletion, isLoading, error }}>
+    <UserContext.Provider value={{ allUsers, userAddition, userDeletion, userUpdate }}>
       {children}
     </UserContext.Provider>
   )

@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { QueryClient } from 'react-query'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { useUser } from '../../../../hooks'
 import { DeleteUserDialogStateAtom, userIdSelectedAtom } from '../../../../recoil-state'
@@ -12,7 +11,6 @@ export default function DeleteUserContent() {
   const [success, setSuccess] = useState<boolean>(false)
   const userIdSelected = useRecoilValue(userIdSelectedAtom)
   const setDeleteUserDialogState = useSetRecoilState(DeleteUserDialogStateAtom)
-  // const client = new QueryClient()
   const { userDeletion } = useUser()
 
   const deleteUser = trpc.useMutation('user.delete')
@@ -25,7 +23,6 @@ export default function DeleteUserContent() {
         { userId },
         {
           onSuccess: () => {
-            // client.invalidateQueries(['user.getAll'])
             setSuccess(true)
             setLoading(false)
             userDeletion(userId)

@@ -20,7 +20,6 @@ export default function DeleteUser({
       onClick={onClick}>
       {!submitting ? btnText : successful && 'Check Icon'}
       {submitting && 'Submitting'}
-      {/* {submitting ? btnText : successful && 'Check Icon'} */}
     </button>
   )
 }

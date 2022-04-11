@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import {
   DeleteUserDialogStateAtom,
@@ -25,6 +25,7 @@ export default function DeleteUserDialog() {
     if (filteredUserState === undefined || null) {
       return
     }
+
     if (deleteUserDialogState) {
       const userData = filteredUserState.filter((user) => user.userId === userIdSelected)
       setPaginatedUserList(userData)

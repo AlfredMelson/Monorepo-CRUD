@@ -1,5 +1,9 @@
 import { createRef, SetStateAction, useEffect, useState } from 'react'
-import { QueryClient } from 'react-query'
+import { useSetRecoilState } from 'recoil'
+// import { QueryClient } from 'react-query'
+import { v4 as uuidv4 } from 'uuid'
+import { useUser } from '../../../../hooks'
+import { AddUserDialogStateAtom } from '../../../../recoil-state'
 import {
   REGEX_City,
   REGEX_Street,
@@ -12,10 +16,13 @@ import { CountrySelector } from '../inputs/CountrySelector'
 import AddUser from '../submissions/AddUser'
 
 export default function AddUserContent() {
-  // update email dialog state
-  // const setAddEmplDialogState = useSetRecoilState(AddEmplDialogStateAtom)
+  const { userAddition } = useUser()
 
-  const client = new QueryClient()
+  const [loading, setLoading] = useState<boolean>(false)
+  const [success, setSuccess] = useState<boolean>(false)
+  const setAddUserDialogState = useSetRecoilState(AddUserDialogStateAtom)
+
+  // const client = new QueryClient()
 
   // firstname input state
   const [firstname, setFirstname] = useState('')
@@ -95,6 +102,7 @@ export default function AddUserContent() {
 
   const handleAddUser = async (event: any) => {
     event.preventDefault()
+    setLoading(true)
 
     if (!firstname) {
       // alert user if firstname input is empty
@@ -151,30 +159,38 @@ export default function AddUserContent() {
       setCityHelperText('')
     }
 
+    const userId: string = uuidv4()
+    const newUser = {
+      userId,
+      firstname,
+      lastname,
+      email,
+      street,
+      city,
+      country
+    }
+
     try {
-      addUser.mutate(
-        {
-          firstname,
-          lastname,
-          email,
-          street,
-          city,
-          country
-        },
-        {
-          onSuccess: () => {
-            client.invalidateQueries(['user.getAll'])
-          }
+      addUser.mutate(newUser, {
+        onSuccess: () => {
+          setSuccess(true)
+          setLoading(false)
+          userAddition(newUser)
         }
-      )
+      })
 
       // update user list
       // notify user has been added
       // close dialog if positive response from server
 
+      setTimeout(function () {
+        setAddUserDialogState(false)
+      }, 1000)
       // open error alert if there is a caught error
     } catch (error) {
       console.log(error)
+      setSuccess(false)
+      setLoading(false)
     }
   }
 
@@ -289,12 +305,10 @@ export default function AddUserContent() {
       </div>
       <div className='row-start-11 col-start-2 text-center'>
         <AddUser
-          verified={formValidation}
+          submitting={loading}
+          successful={success}
           onClick={handleAddUser}
           btnText='Add User'
-          disabled={addUser.isLoading}
-          // submitting={submitting}
-          // successSubmit={successSubmit}
         />
         {addUser.error && <p>Something went wrong! {addUser.error.message}</p>}
       </div>

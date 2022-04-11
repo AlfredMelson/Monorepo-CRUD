@@ -1,14 +1,5 @@
 [
   {
-    "userId": "9a6306c9-b244-472b-8ad8-85306b5e75be",
-    "firstname": "alfred",
-    "lastname": "melson",
-    "email": "vaughn@outlook.com",
-    "street": "123 castle gatve",
-    "city": "vilnius",
-    "country": "LT"
-  },
-  {
     "userId": "b38475ec-74b0-4717-a574-5ed61e8c0274",
     "firstname": "vejuna",
     "lastname": "melson",
@@ -41,15 +32,6 @@
     "lastname": "pangonyte",
     "email": "urte@outlook.com",
     "street": "321 knight gatve",
-    "city": "vilnius",
-    "country": "LT"
-  },
-  {
-    "userId": "9a6306c9-b244-472b-8ad8-48b1558262bd",
-    "firstname": "jimmy",
-    "lastname": "melson",
-    "email": "jimmy@outlook.com",
-    "street": "89 american gatve",
     "city": "vilnius",
     "country": "LT"
   },
@@ -113,24 +95,6 @@
     "lastname": "scott",
     "email": "melissa@outlook.com",
     "street": "549 ukraine gatve",
-    "city": "vilnius",
-    "country": "LT"
-  },
-  {
-    "userId": "a9be2548-15d1-4c94-acba-b69a39245f4f",
-    "firstname": "bobby",
-    "lastname": "baker",
-    "email": "bobby@outlook.com",
-    "street": "44 east coast gatve",
-    "city": "vilnius",
-    "country": "LT"
-  },
-  {
-    "userId": "ac48f196-8724-4672-887e-48b1365222bd",
-    "firstname": "kenny",
-    "lastname": "baker",
-    "email": "kenny@outlook.com",
-    "street": "44 east coast gatve",
     "city": "vilnius",
     "country": "LT"
   },
@@ -207,15 +171,6 @@
     "country": "LT"
   },
   {
-    "userId": "5b369866-9410-4d60-8f91-dcdc05084646",
-    "firstname": "Marvin",
-    "lastname": "Green",
-    "email": "margin@green.com",
-    "street": "16 Rodeo Drive",
-    "city": "Hollywood",
-    "country": "US"
-  },
-  {
     "userId": "82315dd2-00b6-4957-a4be-90404a51936b",
     "firstname": "Maggie",
     "lastname": "Deville",
@@ -270,15 +225,6 @@
     "country": "LT"
   },
   {
-    "userId": "5463b005-41df-4572-84ea-26ac2be04940",
-    "firstname": "Barbara",
-    "lastname": "Bush",
-    "email": "barbara.bush@whitehouse.gov",
-    "street": "1 Boone Docks",
-    "city": "Badlands",
-    "country": "AD"
-  },
-  {
     "userId": "85b40f2c-5caa-4471-8aaa-370eab773671",
     "firstname": "George",
     "lastname": "Bush",
@@ -286,5 +232,23 @@
     "street": "1 Boone Docks",
     "city": "Badlands",
     "country": "AD"
+  },
+  {
+    "userId": "c68145a1-f5a6-4d3c-a9e5-442bc95ce94a",
+    "firstname": "Alice",
+    "lastname": "Scott",
+    "email": "alice@ukraine.gov",
+    "street": "223 Freedom Way",
+    "city": "Kviv",
+    "country": "UA"
+  },
+  {
+    "userId": "ce83dfc6-dc88-4576-a370-c8096e9f6994",
+    "firstname": "Vlad",
+    "lastname": "Scott",
+    "email": "vlad@ukraine.gov",
+    "street": "223 Freedom Way",
+    "city": "Kviv",
+    "country": "UA"
   }
 ]
