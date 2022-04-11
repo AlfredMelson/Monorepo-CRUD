@@ -8,10 +8,9 @@ import {
   useEffect,
   useState
 } from 'react'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { useSetRecoilState } from 'recoil'
 import { userStateAtom } from '../recoil-state'
 import { IUser } from '../types/User'
-import { trpc } from '../utils'
 
 export interface Users {
   allUsers: IUser[]
@@ -30,8 +29,6 @@ const UserContext = createContext<Users>({
 })
 
 export const useUsersContext = () => useContext(UserContext)
-
-// const UserContext = createContext<Record<string, any>>({})
 
 interface IUserProvider {
   children: ReactNode
