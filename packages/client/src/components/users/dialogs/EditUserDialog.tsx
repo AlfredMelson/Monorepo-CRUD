@@ -1,17 +1,16 @@
 import { motion } from 'framer-motion'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
-import { EditUserDialogStateAtom, userIdSelectedAtom, userStateAtom } from '../../../recoil-state'
+import { useUser } from '../../../hooks'
+import { EditUserDialogStateAtom, userIdSelectedAtom } from '../../../recoil-state'
 import { EditUserContent } from './content'
 import { DialogHeader } from './header'
 
 export default function EditUserDialog() {
   const setEditUserDialogState = useSetRecoilState(EditUserDialogStateAtom)
-  const userState = useRecoilValue(userStateAtom)
+  const { allUsers } = useUser()
   const userIdSelected = useRecoilValue(userIdSelectedAtom)
 
-  const userData = userState.filter((user) => user.userId === userIdSelected)
-
-  console.log('userData', userData[0].firstname)
+  const userData = allUsers.filter((user) => user.userId === userIdSelected)
 
   const closeDialog = (event: any) => {
     if (event.keyCode === 27 || event.currentTarget === event.target) {

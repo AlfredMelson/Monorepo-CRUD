@@ -1,11 +1,7 @@
 import { createRef, SetStateAction, useEffect, useState } from 'react'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { useUser } from '../../../../hooks'
-import {
-  EditUserDialogStateAtom,
-  userIdSelectedAtom,
-  userStateAtom
-} from '../../../../recoil-state'
+import { EditUserDialogStateAtom, userIdSelectedAtom } from '../../../../recoil-state'
 import {
   REGEX_City,
   REGEX_Street,
@@ -18,19 +14,18 @@ import { CountrySelector } from '../inputs/CountrySelector'
 import { SubmitButton } from '../submission'
 
 export default function EditUserContent() {
-  const { userUpdate } = useUser()
+  const { allUsers, userUpdate } = useUser()
 
   const [loading, setLoading] = useState<boolean>(false)
   const [success, setSuccess] = useState<boolean>(false)
   const setEditUserDialogState = useSetRecoilState(EditUserDialogStateAtom)
 
-  const userState = useRecoilValue(userStateAtom)
   const userIdSelected = useRecoilValue(userIdSelectedAtom)
 
-  const userData = userState.filter((user) => user.userId === userIdSelected)
+  const userData = allUsers.filter((user) => user.userId === userIdSelected)
 
-  // userId input state
-  const [userId, setUserId] = useState('')
+  // // userId input state
+  // const [userId, setUserId] = useState('')
 
   // firstname input state
   const [firstname, setFirstname] = useState(userData[0].firstname)
@@ -62,19 +57,6 @@ export default function EditUserContent() {
   // completed form validation state
   const [formValidation, setFormValidation] = useState<boolean>(false)
 
-  // handle form validation state
-  useEffect(() => {
-    const validFirstname: boolean = firstname !== '' && REGEX_Username.test(firstname)
-    const validLastname: boolean = lastname !== '' && REGEX_Username.test(lastname)
-    const validEmail: boolean = regexEmailValidation.test(email.toLowerCase())
-    // validate country against api
-    // const validCountry: boolean = emplRole === 'Read' || 'Write' || 'Admin'
-    if (validFirstname && validLastname && validEmail)
-      return () => {
-        setFormValidation(true)
-      }
-  }, [emailValidation, email, firstname, lastname, street, city, country])
-
   // handle setting and updating error message and state
   useEffect(() => {
     return () => {
@@ -102,6 +84,24 @@ export default function EditUserContent() {
   // if (!email) {
   //   return setEmailHelperText('Please enter an email')
   // }
+
+  // updated form state
+  const [formUpdated, setFormUpdated] = useState<boolean>(false)
+
+  useEffect(() => {
+    // check if inputs have changed
+    if (
+      firstname !== userData[0].firstname ||
+      lastname !== userData[0].lastname ||
+      email !== userData[0].email ||
+      street !== userData[0].street ||
+      city !== userData[0].city ||
+      country !== userData[0].country
+    ) {
+      setFormUpdated(true)
+    }
+  }, [firstname, lastname, email, street, city, country, userData])
+
   const editUser = trpc.useMutation('user.edit')
 
   const handleEditUser = async (event: any) => {
@@ -109,7 +109,6 @@ export default function EditUserContent() {
     setLoading(true)
 
     if (!firstname) {
-      // alert user if firstname input is empty
       return setFirstnameHelperText('Please enter a first name')
     }
     const validFirstname: boolean = firstname !== '' && REGEX_Username.test(firstname)
@@ -163,6 +162,8 @@ export default function EditUserContent() {
       setCityHelperText('')
     }
 
+    const userId = userIdSelected
+
     const updatedUser = {
       userId,
       firstname,
@@ -174,24 +175,13 @@ export default function EditUserContent() {
     }
 
     try {
-      editUser.mutate(
-        {
-          userId,
-          firstname,
-          lastname,
-          email,
-          street,
-          city,
-          country
-        },
-        {
-          onSuccess: () => {
-            setSuccess(true)
-            setLoading(false)
-            userUpdate(updatedUser)
-          }
+      editUser.mutate(updatedUser, {
+        onSuccess: () => {
+          setSuccess(true)
+          setLoading(false)
+          userUpdate(updatedUser)
         }
-      )
+      })
 
       // update user list
       // notify user has been added
@@ -317,16 +307,17 @@ export default function EditUserContent() {
           />
         </label>
       </div>
-
-      <div className='row-start-11 col-start-2 text-center'>
-        <SubmitButton
-          btnText='Update User'
-          submitting={loading}
-          successful={success}
-          onClick={handleEditUser}
-        />
-        {editUser.error && <p>Something went wrong! {editUser.error.message}</p>}
-      </div>
+      {formUpdated && (
+        <div className='row-start-11 col-start-2 text-center'>
+          <SubmitButton
+            btnText='Update User'
+            submitting={loading}
+            successful={success}
+            onClick={handleEditUser}
+          />
+          {editUser.error && <p>Something went wrong! {editUser.error.message}</p>}
+        </div>
+      )}
     </div>
   )
 }

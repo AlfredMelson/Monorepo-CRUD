@@ -1,6 +1,13 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
-import { useQuery } from 'react-query'
+import {
+  createContext,
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useState
+} from 'react'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { userStateAtom } from '../recoil-state'
 import { IUser } from '../types/User'
@@ -8,6 +15,7 @@ import { trpc } from '../utils'
 
 export interface Users {
   allUsers: IUser[]
+  setAllUsers: Dispatch<SetStateAction<IUser[]>>
   userAddition: (newUser: IUser) => void
   userUpdate: (newUser: IUser) => void
   userDeletion: (userId: string) => void
@@ -15,6 +23,7 @@ export interface Users {
 
 const UserContext = createContext<Users>({
   allUsers: [],
+  setAllUsers: () => {},
   userAddition: () => {},
   userUpdate: () => {},
   userDeletion: () => {}
@@ -27,20 +36,17 @@ export const useUsersContext = () => useContext(UserContext)
 interface IUserProvider {
   children: ReactNode
 }
-function DbUser() {
-  const response = trpc.useQuery(['user.getAll'])
-  return response
-}
 
 export const UserProvider = ({ children }: IUserProvider) => {
-  const userState = useRecoilValue(userStateAtom)
+  const setUserState = useSetRecoilState(userStateAtom)
   const [allUsers, setAllUsers] = useState<IUser[]>([])
 
   useEffect(() => {
-    if (userState) {
-      setAllUsers(userState)
+    if (allUsers) {
+      setUserState(allUsers)
     }
-  }, [userState])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [allUsers])
 
   // delete user from state
   const userDeletion = (userId: string) => {
@@ -61,7 +67,7 @@ export const UserProvider = ({ children }: IUserProvider) => {
   }
 
   return (
-    <UserContext.Provider value={{ allUsers, userAddition, userDeletion, userUpdate }}>
+    <UserContext.Provider value={{ allUsers, setAllUsers, userAddition, userDeletion, userUpdate }}>
       {children}
     </UserContext.Provider>
   )

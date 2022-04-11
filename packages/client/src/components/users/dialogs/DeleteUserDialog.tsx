@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import { useUser } from '../../../hooks'
 import {
   DeleteUserDialogStateAtom,
   filteredUserStateSelector,
   paginatedUserListAtom,
-  userIdSelectedAtom,
-  userStateAtom
+  userIdSelectedAtom
 } from '../../../recoil-state'
 import { DeleteUserContent } from './content'
 import { DialogHeader } from './header'
@@ -15,7 +15,7 @@ export default function DeleteUserDialog() {
   const [deleteUserDialogState, setDeleteUserDialogState] =
     useRecoilState(DeleteUserDialogStateAtom)
   const filteredUserState = useRecoilValue(filteredUserStateSelector)
-  const userState = useRecoilValue(userStateAtom)
+  const { allUsers } = useUser()
   const userIdSelected = useRecoilValue(userIdSelectedAtom)
 
   const setPaginatedUserList = useSetRecoilState(paginatedUserListAtom)
@@ -32,7 +32,7 @@ export default function DeleteUserDialog() {
     }
   }, [deleteUserDialogState, filteredUserState, setPaginatedUserList, userIdSelected])
 
-  const userData = userState.filter((user) => user.userId === userIdSelected)
+  const userData = allUsers.filter((user) => user.userId === userIdSelected)
 
   const closeDialog = (event: any) => {
     if (event.keyCode === 27 || event.currentTarget === event.target) {

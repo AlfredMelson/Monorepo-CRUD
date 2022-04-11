@@ -1,11 +1,11 @@
 import { AnimatePresence } from 'framer-motion'
 import { Suspense, useEffect, useState } from 'react'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilValue } from 'recoil'
+import { useUser } from '../../hooks'
 import {
   AddUserDialogStateAtom,
   DeleteUserDialogStateAtom,
-  EditUserDialogStateAtom,
-  userStateAtom
+  EditUserDialogStateAtom
 } from '../../recoil-state'
 import { trpc } from '../../utils'
 import { PanelControls } from './controls'
@@ -18,7 +18,9 @@ import { User } from './user'
 const UsersCard = () => {
   const addUserDialogState = useRecoilValue(AddUserDialogStateAtom)
   const editUserDialogState = useRecoilValue(EditUserDialogStateAtom)
-  const setUserState = useSetRecoilState(userStateAtom)
+
+  const { setAllUsers } = useUser()
+
   const deleteUserDialogState = useRecoilValue(DeleteUserDialogStateAtom)
 
   const response = trpc.useQuery(['user.getAll'])
@@ -27,7 +29,7 @@ const UsersCard = () => {
   useEffect(() => {
     setIsLoading(true)
     if (response.data) {
-      setUserState(response.data)
+      setAllUsers(response.data)
     }
     setTimeout(function () {
       setIsLoading(false)

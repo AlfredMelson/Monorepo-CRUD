@@ -64,9 +64,9 @@ export default function SearchSelectors() {
                     setSelected(option.index)
                   }}
                   aria-label='Select search filter'
-                  className='text-md text relative cursor-pointer list-none py-4 font-semibold'>
+                  className='text-md text relative cursor-pointer list-none py-4 font-medium'>
                   <span
-                    className='absolute left-0 right-0 top-0 z-10 '
+                    className='absolute left-0 right-0 top-0 z-10 block'
                     style={{ color: selected === option.index ? ' #fff' : '#1f6feb' }}>
                     {option.label}
                   </span>
