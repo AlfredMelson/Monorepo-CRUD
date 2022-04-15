@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
-import { ErrorBoundary } from 'react-error-boundary'
+// import { ErrorBoundary } from 'react-error-boundary'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
 import AppContent from './AppContent'
@@ -17,19 +17,19 @@ const approot = createRoot(rootElement)
 // initial render
 
 approot.render(
-  <ErrorBoundary FallbackComponent={ErrorFallback}>
-    <Suspense fallback={<Loading />}>
-      <React.StrictMode>
-        <RecoilRoot>
-          <BrowserRouter>
-            <UserProvider>
-              <Routes>
-                <Route path='/*' element={<AppContent />} />
-              </Routes>
-            </UserProvider>
-          </BrowserRouter>
-        </RecoilRoot>
-      </React.StrictMode>
-    </Suspense>
-  </ErrorBoundary>
+  // <ErrorBoundary FallbackComponent={ErrorFallback}>
+  <Suspense fallback={<Loading />}>
+    <React.StrictMode>
+      <RecoilRoot>
+        <BrowserRouter>
+          <UserProvider>
+            <Routes>
+              <Route path='/*' element={<AppContent />} />
+            </Routes>
+          </UserProvider>
+        </BrowserRouter>
+      </RecoilRoot>
+    </React.StrictMode>
+  </Suspense>
+  // </ErrorBoundary>
 )

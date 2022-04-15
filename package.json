@@ -11,10 +11,10 @@
     "clean": "lerna clean --yes && rimraf node_modules yarn.lock"
   },
   "devDependencies": {
-    "@types/rimraf": "^3.0.2",
-    "concurrently": "^7.1.0",
-    "lerna": "^4.0.0",
-    "rimraf": "^3.0.2",
-    "wsrun": "^5.2.4"
+    "@types/rimraf": "3.0.2",
+    "concurrently": "7.1.0",
+    "lerna": "4.0.0",
+    "rimraf": "3.0.2",
+    "wsrun": "5.2.4"
   }
 }

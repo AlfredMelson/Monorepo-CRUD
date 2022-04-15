@@ -1,4 +1,3 @@
-import { AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { Route, Routes, useLocation } from 'react-router-dom'
