@@ -11,7 +11,6 @@ export default function Collocation() {
 
   const filteredUserState = useRecoilValue(filteredUserStateSelector)
 
-  const [focused, setFocused] = useState<number | null>(null)
   const [selected, setSelected] = useState<number>(0)
 
   const sortData: ISortData[] = [
@@ -26,15 +25,10 @@ export default function Collocation() {
       className='col-span-1 col-start-1 place-content-center'>
       {filteredUserState && filteredUserState.length >= 2 && (
         <LayoutGroup>
-          <div onMouseLeave={() => setFocused(null)} className='grid grid-cols-[_60px_60px] '>
+          <div className='grid grid-cols-[_60px_60px] '>
             {sortData.map((option) => (
               <li
                 key={option.index}
-                onKeyDown={(event: { key: string }) =>
-                  event.key === 'Enter' && setSelected(option.index)
-                }
-                onFocus={() => setFocused(option.index)}
-                onMouseEnter={() => setFocused(option.index)}
                 onClick={() => {
                   setSelected(option.index)
                   setAlphabeticalSort(option.value)
@@ -46,18 +40,6 @@ export default function Collocation() {
                   style={{ color: selected === option.index ? ' #fff' : '#1f6feb' }}>
                   {option.icon}
                 </span>
-                {focused === option.index && (
-                  <motion.div
-                    transition={{
-                      layout: {
-                        duration: 0.2,
-                        ease: [0.6, 0.66, 0.04, 1]
-                      }
-                    }}
-                    className='absolute -left-3 right-0 top-0 z-0 h-9 w-full rounded bg-grey-700'
-                    layoutId='highlight'
-                  />
-                )}
               </li>
             ))}
           </div>

@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.0.23 | MIT License | https://tailwindcss.com
+! tailwindcss v3.0.24 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -811,10 +811,6 @@ input:-webkit-autofill,
 
 .top-0 {
   top: 0px;
-}
-
-.-left-3 {
-  left: -0.75rem;
 }
 
 .bottom-0 {

@@ -3,7 +3,8 @@ import { useRecoilValue } from 'recoil'
 import {
   AddUserDialogStateAtom,
   DeleteUserDialogStateAtom,
-  EditUserDialogStateAtom
+  EditUserDialogStateAtom,
+  SearchUserDialogStateAtom
 } from '../../../recoil-state'
 import AddUserButton from './AddUserButton'
 import AppName from './AppName'
@@ -14,6 +15,7 @@ export default function HeaderSection() {
   const addUserDialogState = useRecoilValue(AddUserDialogStateAtom)
   const editUserDialogState = useRecoilValue(EditUserDialogStateAtom)
   const deleteUserDialogState = useRecoilValue(DeleteUserDialogStateAtom)
+  const searchUserDialogState = useRecoilValue(SearchUserDialogStateAtom)
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -23,8 +25,14 @@ export default function HeaderSection() {
       className='mt-6 mb-3 grid w-full grid-cols-[_30px_auto_40px_30px] px-4'>
       <HeaderLogo />
       <AppName />
-      {!addUserDialogState && !editUserDialogState && !deleteUserDialogState && <AddUserButton />}
-      {!addUserDialogState && !editUserDialogState && !deleteUserDialogState && <SearchUsers />}
+      {!addUserDialogState &&
+        !editUserDialogState &&
+        !deleteUserDialogState &&
+        !searchUserDialogState && <AddUserButton />}
+      {!addUserDialogState &&
+        !editUserDialogState &&
+        !deleteUserDialogState &&
+        !searchUserDialogState && <SearchUsers />}
     </motion.div>
   )
 }
